@@ -343,4 +343,4 @@ dscl.on("message", (message)=> {
 
 });
 
-dscl.login(config.Token);
+dscl.login(process.env.token);
