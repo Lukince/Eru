@@ -45,7 +45,7 @@ dscl.on("message", (message)=> {
 
     if (cmd == `${prefix}안녕`) {
         //console.log(message.mentions.user.id)
-        return message.channel.send(HelloArr[RandInt(0,1)]);
+        return message.channel.send(HelloArr[RandInt(1)]);
     }
 
     if (cmd == `${prefix}체크`) {
