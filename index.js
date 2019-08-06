@@ -1,7 +1,7 @@
 const config = require('./config.json');
 const discord = require('discord.js');
 const dscl = new discord.Client();
-const prefix = ">";
+const prefix = config.prefix;
 const ytdl = require('ytdl-core')
 const ffmpeg = require('ffmpeg-binaries');
 
@@ -343,4 +343,4 @@ dscl.on("message", (message)=> {
 
 });
 
-dscl.login(process.env.token);
+dscl.login(config.Token);
