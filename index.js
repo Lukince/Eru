@@ -1,7 +1,7 @@
 const config = require('./config.json');
 const discord = require('discord.js');
 const dscl = new discord.Client();
-const prefix = config.prefix;
+const prefix = ">";
 const ytdl = require('ytdl-core')
 const ffmpeg = require('ffmpeg-binaries');
 
