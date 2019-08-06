@@ -1,8 +1,7 @@
 const discord = require('discord.js');
 const dscl = new discord.Client();
 const prefix = ">";
-const ytdl = require('ytdl-core')
-const ffmpeg = require('ffmpeg-binaries');
+const token = process.env.token;
 
 function RandInt(max) {
     return Math.round(Math.random() * max);
@@ -342,4 +341,4 @@ dscl.on("message", (message)=> {
 
 });
 
-dscl.login(process.env.token);
+dscl.login(token).catch(err => console.log(err));
