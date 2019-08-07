@@ -361,7 +361,9 @@ dscl.on("message", (message)=> {
     }
 
     if (message.isMentioned('538681468679880736')) {
+        const hook = new Discord.WebhookClient('608647893724692538', 'va4gc3u3pp84rdEzxcEFCoufOlHIMD30eZcJJ98G8-oJ7wfVfviGUBZfPFTc8fPwawyl');
         message.channel.send(`나불렀엉?`)
+        hook.send("Someone Called Me")
     }
 
     msg = ''
