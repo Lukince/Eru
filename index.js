@@ -360,6 +360,8 @@ dscl.on("message", (message)=> {
         message.channel.stopTyping()
     }
 
+    if (message.isMentioned(538681468679880736))
+
     msg = ''
     ErrorCode = 0
 
