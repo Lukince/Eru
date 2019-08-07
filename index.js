@@ -345,6 +345,13 @@ dscl.on("message", (message)=> {
         message.channel.send(select[1])
     }
 
+    if (cmd == `${prefix}반응`) {
+        if (add == null) {
+            return message.channel.send(`원하는 이모지를 써주세요 EX) :thinking:`)
+        }
+        message.content.react(add)
+    }
+
     msg = ''
     ErrorCode = 0
 
