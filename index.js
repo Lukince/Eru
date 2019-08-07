@@ -214,7 +214,6 @@ dscl.on("message", (message)=> {
     if (check[0] == ">") {
         if (message.channel != "dm") {
             hook.send(`${message.guild.name} 서버에서 ${message.channel.name} 채널에서 ${message.author.username} - ${message.author.id} 님이 ${message.content} 을(를) 사용하셨습니다.`)
-            console.log(`${message.guild.name} 서버에서 ${message.channel.name} 채널에서 ${message.author.username} - ${message.author.id} 님이 ${message.content} 을(를) 사용하셨습니다.`)
         }
     }
 
