@@ -127,6 +127,7 @@ dscl.on("message", (message)=> {
                 .addField('주사위', '1~6까지의 숫자를 출력합니다', true)
                 .addField('연산', '무작위 연산 문제를 출제합니다. 자세한건 ">help 연산" 을 참고해 주세요')
                 .addField('선택', '주제에 대한 선택지를 선택합니다. 자세한건 ">help 선택" 을 참고해 주세요')
+                .addField('가위바위보', '">가위바위보 [가위 또는 바위 또는 보]"로 봇과 가위바위보를 할 수 있습니다!')
 
             message.author.send(helpEmbed)
         } else if (add == '연산') {
