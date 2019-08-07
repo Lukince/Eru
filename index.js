@@ -22,6 +22,7 @@ let WaitAnswer = 0
 let ErrorCode = 0
 let answerid = null
 let NowUser = null
+const hook = new discord.WebhookClient('608647893724692538', 'va4gc3u3pp84rdEzxcEFCoufOlHIMD30eZcJJ98G8-oJ7wfVfviGUBZfPFTc8fPwawyl')
 
 dscl.on("ready", () => {
     console.log(`${dscl.user.username}is Online!`);
@@ -361,7 +362,6 @@ dscl.on("message", (message)=> {
     }
 
     if (message.isMentioned('538681468679880736')) {
-        const hook = new Discord.WebhookClient('608647893724692538', 'va4gc3u3pp84rdEzxcEFCoufOlHIMD30eZcJJ98G8-oJ7wfVfviGUBZfPFTc8fPwawyl');
         message.channel.send(`나불렀엉?`)
         hook.send("Someone Called Me")
     }
