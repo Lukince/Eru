@@ -352,6 +352,14 @@ dscl.on("message", (message)=> {
         message.react(add)
     }
 
+    if (cmd == `${prefix}타이핑`) {
+        message.channel.startTyping()
+    }
+
+    if (cmd == `${prefix}중지`) {
+        message.channel.stopTyping()
+    }
+
     msg = ''
     ErrorCode = 0
 
