@@ -360,7 +360,9 @@ dscl.on("message", (message)=> {
         message.channel.stopTyping()
     }
 
-    if (message.isMentioned(538681468679880736))
+    if (message.isMentioned(538681468679880736)) {
+        message.channel.send(`${prefix} 나불렀엉?`)
+    }
 
     msg = ''
     ErrorCode = 0
