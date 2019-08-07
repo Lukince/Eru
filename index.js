@@ -79,9 +79,7 @@ dscl.on("message", (message)=> {
     }
 
     if (cmd == `${prefix}help`) {
-        message.channel.send(`${message.author}님의 DM으로 전송되었습니다!`)
         if(add == '체크') {
-
             let checkHelp = new discord.RichEmbed()
                 .setColor("#ff9900")
                 .setTitle('>체크 [인수]')
@@ -146,6 +144,8 @@ dscl.on("message", (message)=> {
         } else {
             return message.channel.send(`${message.author} 알수 없는 인수입니다. ">help" 를 사용해 주세요`)
         }
+        message.channel.send(`${message.author}님의 DM으로 전송되었습니다!`)
+
     }
 
     if (cmd == `${prefix}말하기`) {
