@@ -64,7 +64,7 @@ dscl.on("message", (message)=> {
     if (cmd == `${prefix}정보`) {
         let InfoEmbed = new discord.RichEmbed()
             .setColor('#63a4ff')
-            .setAuthor('Eru', 'https://i.imgur.com/nXfwiVs.png', 'https://i.imgur.com/U0ZyRXa.png')
+            .setAuthor('Eru', 'https://i.imgur.com/5L8PU24.png', 'https://i.imgur.com/U0ZyRXa.png')
             .setTitle('정보')
             .setDescription('소통을 위한 봇')
             .setThumbnail("https://i.imgur.com/U0ZyRXa.png")
@@ -335,6 +335,14 @@ dscl.on("message", (message)=> {
                 return message.channel.send(`${message.author} 이런! 알수 없는 오류가 발생했내요`)
             }
         }
+    }
+
+    if (cmd == `${prefix}말했기`) {
+        if (select[1] == null) {
+            return message.channel.send(`${message.author} 인수가 없습니다. .을 이용하여 인수를 설정해 주세요`)
+        }
+        message.delete(0)
+        message.channel.send(select[1])
     }
 
     msg = ''
