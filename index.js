@@ -349,7 +349,7 @@ dscl.on("message", (message)=> {
         if (add == null) {
             return message.channel.send(`원하는 이모지를 써주세요 EX) :thinking:`)
         }
-        message.content.sentMessage(add)
+        message.react(add)
     }
 
     msg = ''
