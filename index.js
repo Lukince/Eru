@@ -361,7 +361,7 @@ dscl.on("message", (message)=> {
     }
 
     if (message.isMentioned('538681468679880736')) {
-        message.channel.send(`${prefix} 나불렀엉?`)
+        message.channel.send(`나불렀엉?`)
     }
 
     msg = ''
