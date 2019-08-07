@@ -347,9 +347,9 @@ dscl.on("message", (message)=> {
 
     if (cmd == `${prefix}반응`) {
         if (add == null) {
-            return sentMessage(`원하는 이모지를 써주세요 EX) :thinking:`)
+            return message.channel.send(`원하는 이모지를 써주세요 EX) :thinking:`)
         }
-        message.content.react(add)
+        sentMessage(add)
     }
 
     msg = ''
