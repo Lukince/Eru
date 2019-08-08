@@ -194,10 +194,6 @@ dscl.on("message", (message)=> {
 
         } else if (select[6] != null) message.channel.send(`${message.author} 인수 값의 최대는 4개 입니다.`);
         else message.channel.send(`${message.author} ">help 선택" 을 참고해 주세요`);
-    } else if (check[0] == ">") {
-        if (message.channel != "dm") {
-            hook.send(`${message.guild.name} 서버에서 ${message.channel.name} 채널에서 ${message.author.username} - ${message.author.id} 님이 ${message.content} 을(를) 사용하셨습니다.`)
-        }
     } else if (cmd == `${prefix}kick`) {
         if (roll.hasPermission('BAN_MEMBERS')) {
             console.log('이 유저는 ban이 불가능 합니다.');
@@ -340,6 +336,12 @@ dscl.on("message", (message)=> {
         }
     } else if (check[0] == prefix) {
         message.channel.send(`${message.author} 아직은 그런거 모르는데..`)
+    }
+
+    if (check[0] == ">") {
+        if (message.channel != "dm") {
+            hook.send(`${message.guild.name} 서버에서 ${message.channel.name} 채널에서 ${message.author.username} - ${message.author.id} 님이 ${message.content} 을(를) 사용하셨습니다.`)
+        }
     }
 
     msg = ''
