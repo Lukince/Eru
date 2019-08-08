@@ -323,20 +323,21 @@ dscl.on("message", (message)=> {
             
     } else if (message.isMentioned('538681468679880736')) {
         message.channel.send(`나불렀엉?`)
-    } else if (message.author.id == '378535260754935819') {
-        if (cmd == `${prefix}타이핑`) {
-            message.channel.startTyping()
+    } else if (cmd == `${prefix}타이핑`) {
+        if (message.author.id == '378535260754935819') return message.channel.startTyping()
+        else if (message.author.id != '378535260754935819') {
+            message.channel.send(`${message.author} 봇 관리자 전용 메시지 입니다. 또는 실험중인 명령어 입니다.`)
         }
-
-        if (cmd == `${prefix}중지`) {
-            message.channel.stopTyping()
+    } else if (cmd == `${prefix}중지`) {
+        if (message.author.id == '378535260754935819') message.channel.stopTyping()
+        else if (message.author.id != '378535260754935819') {
+            message.channel.send(`${message.author} 봇 관리자 전용 메시지 입니다. 또는 실험중인 명령어 입니다.`)
         }
-
-        if (cmd == `${prefix}js`) {
-            message.channel.send('https://discord.js.org/')
+    } else if (cmd == `${prefix}js`) {
+        if (message.author.id == '378535260754935819') message.channel.send('https://discord.js.org/')
+        else if (message.author.id != '378535260754935819') {
+            message.channel.send(`${message.author} 봇 관리자 전용 메시지 입니다. 또는 실험중인 명령어 입니다.`)
         }
-    } else if (message.author.id != '378535260754935819' && check[0] == prefix) {
-        message.channel.send(`${message.author} 봇 관리자 전용 메시지 입니다. 또는 실험중인 명령어 입니다.`)
     } else if (check[0] == prefix) {
         message.channel.send(`${message.author} 아직은 그런거 모르는데..`)
     }
