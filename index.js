@@ -368,11 +368,13 @@ dscl.on("message", (message)=> {
             message.channel.stopTyping()
         }
 
-        if (cmd == js) {
+        if (cmd == `${prefix}js`) {
             message.channel.send('https://discord.js.org/')
         }
+    } else if (message.author.id != '378535260754935819') {
+        message.channel.send(`${message.author} 봇 관리자 전용 메시지 입니다. 또는 실험중인 명령어 입니다.`)
     }
-    
+
     msg = ''
     ErrorCode = 0
 
