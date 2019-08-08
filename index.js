@@ -47,9 +47,7 @@ dscl.on("message", (message)=> {
     if (cmd == `${prefix}안녕`) {
         //console.log(message.mentions.user.id)
         return message.channel.send(HelloArr[RandInt(1)]);
-    }
-
-    if (cmd == `${prefix}체크`) {
+    } else if (cmd == `${prefix}체크`) {
         if (add == "출석") {
 
             return message.channel.send(`${message.author} 출석 체크 되었습니다!`);
@@ -60,9 +58,7 @@ dscl.on("message", (message)=> {
 
             return message.channel.send(`${message.author} 알수 없는 인수입니다. ">help 체크" 를 사용해 주세요.`);
         }
-    }
-
-    if (cmd == `${prefix}정보`) {
+    } else if (cmd == `${prefix}정보`) {
         let InfoEmbed = new discord.RichEmbed()
             .setColor('#63a4ff')
             .setAuthor('Eru', 'https://i.imgur.com/5L8PU24.png', 'https://i.imgur.com/U0ZyRXa.png')
@@ -76,9 +72,7 @@ dscl.on("message", (message)=> {
             .setFooter(version)
 
         message.author.send(InfoEmbed)
-    }
-
-    if (cmd == `${prefix}help`) {
+    } else if (cmd == `${prefix}help`) {
         if(add == '체크') {
             let checkHelp = new discord.RichEmbed()
                 .setColor("#ff9900")
@@ -112,8 +106,7 @@ dscl.on("message", (message)=> {
             //,(콤마)를 기준으로 나누는거 해결하기
 
             message.author.send(chooseHelp)
-        }
-        else if (add == null) {
+        } else if (add == null) {
             let helpEmbed = new discord.RichEmbed()
                 .setColor('#ff0000')
                 .setAuthor('도움말', 'https://i.imgur.com/wjV4Ab1.png')
@@ -146,25 +139,17 @@ dscl.on("message", (message)=> {
         }
         message.channel.send(`${message.author}님의 DM으로 전송되었습니다!`)
 
-    }
-
-    if (cmd == `${prefix}말하기`) {
+    } else if (cmd == `${prefix}말하기`) {
         message.channel.send(add);
-    }
-
-    if (cmd == `${prefix}DM`) {
+    } else if (cmd == `${prefix}DM`) {
         message.author.send(`${message.author.id}`);
-    }
-
-    if (cmd == `${prefix}투표`) {
+    } else if (cmd == `${prefix}투표`) {
         message.channel.send(select[1]).then(sentMessage => {
             sentMessage.react('✅')
                 .then(() => sentMessage.react('❌'))
                 .catch(() => console.log('투표 구문 에러 code:1 js 126~132'))
         }) .catch(() => message.channel.send(`${message.author} 인수를 찾을 수 없습니다. ">help 투표" 를 사용해 주세요`))
-    }
-
-    if (cmd == `${prefix}선택`) {
+    } else if (cmd == `${prefix}선택`) {
         console.log(select[0])
         console.log(select[1])
         console.log(select[2])
@@ -209,27 +194,19 @@ dscl.on("message", (message)=> {
 
         } else if (select[6] != null) message.channel.send(`${message.author} 인수 값의 최대는 4개 입니다.`);
         else message.channel.send(`${message.author} ">help 선택" 을 참고해 주세요`);
-    }
-
-    if (check[0] == ">") {
+    } else if (check[0] == ">") {
         if (message.channel != "dm") {
             hook.send(`${message.guild.name} 서버에서 ${message.channel.name} 채널에서 ${message.author.username} - ${message.author.id} 님이 ${message.content} 을(를) 사용하셨습니다.`)
         }
-    }
-
-    if (cmd == `${prefix}kick`) {
+    } else if (cmd == `${prefix}kick`) {
         if (roll.hasPermission('BAN_MEMBERS')) {
             console.log('이 유저는 ban이 불가능 합니다.');
             return;
         }
         console.log('이 유저는 ban이 가능합니다.');
-    }
-
-    if (cmd == `${prefix}주사위`) {
+    } else if (cmd == `${prefix}주사위`) {
         return message.channel.send(RollArr[RandInt(5)]);
-    }
-
-    if (cmd == `${prefix}연산`) {
+    } else if (cmd == `${prefix}연산`) {
         if (WaitAnswer == 0) {
             NowUser = message.author.username
             answerid = message.author.id
@@ -261,9 +238,7 @@ dscl.on("message", (message)=> {
         } else if (WaitAnswer == 1) {
             return message.channel.send(`${NowUser}님이 문제를 풀고 있습니다.`)
         }
-    }
-
-    if (cmd == `${prefix}답` && WaitAnswer == 1 && message.author.id == answerid) {
+    } else if (cmd == `${prefix}답` && WaitAnswer == 1 && message.author.id == answerid) {
         if (add == null) {
             message.channel.send("답을 입력해 주세요.")
         } else if (add == "skip") {
@@ -284,18 +259,14 @@ dscl.on("message", (message)=> {
         message.channel.send(`${message.author} 문제 출제자만 정답을 입력할 수 있습니다.`)
     } else if (cmd == `${prefix}답` && WaitAnswer == 0) {
         message.channel.send(`문제를 푸는중이 아닙니다!`)
-    }
-
-    if (cmd == `${prefix}nsfw` || cmd == `${prefix}NSFW`) {
+    } else if (cmd == `${prefix}nsfw` || cmd == `${prefix}NSFW`) {
         if (message.channel.id == '457331588858904586') {
             message.member.addRole('476377978771603467')
             message.channel.send(`:white_check_mark: ${message.author}님에게 NSFW역할이 부여되었습니다!`)
         } else {
             message.channel.send('사용 가능한 채널 또는 서버가 아닙니다.')
         }
-    }
-
-    if (cmd == `${prefix}가위바위보`) {
+    } else if (cmd == `${prefix}가위바위보`) {
         let Paper = 0
         let BotPaper = PaperArr[RandInt(2)]
         if (add != PaperArr[0] && add != PaperArr[1] && add != PaperArr[2]) {
@@ -336,30 +307,23 @@ dscl.on("message", (message)=> {
                 return message.channel.send(`${message.author} 이런! 알수 없는 오류가 발생했내요`)
             }
         }
-    }
-
-    if (cmd == `${prefix}말했기`) {
+    } else if (cmd == `${prefix}말했기`) {
         if (select[1] == null) {
             return message.channel.send(`${message.author} 인수가 없습니다. .을 이용하여 인수를 설정해 주세요`)
         }
         message.delete(0)
-        message.channel.send(select[1])
-    }
-
-    if (cmd == `${prefix}반응`) {
+        .then(() => message.channel.send(select[1]))
+        .catch(() => hook.send(`${message.guild.name} 서버에서 채팅 지우기 권한이 존재하지 않습니다.`))
+    } else if (cmd == `${prefix}반응`) {
         if (add == null) {
             return message.channel.send(`원하는 이모지를 써주세요 EX) :thinking:`)
         }
         message.react(add).then(() => message.channel.send(`${message.author} ${add}반응을 달았습니다!`))
             .catch(() => hook.send('349~354줄 반응 구문 오류'))
             
-    }
-
-    if (message.isMentioned('538681468679880736')) {
+    } else if (message.isMentioned('538681468679880736')) {
         message.channel.send(`나불렀엉?`)
-    }
-
-    if (message.author.id == '378535260754935819') {
+    } else if (message.author.id == '378535260754935819') {
         if (cmd == `${prefix}타이핑`) {
             message.channel.startTyping()
         }
@@ -371,8 +335,10 @@ dscl.on("message", (message)=> {
         if (cmd == `${prefix}js`) {
             message.channel.send('https://discord.js.org/')
         }
-    } else if (message.author.id != '378535260754935819') {
+    } else if (message.author.id != '378535260754935819' && check[0] == prefix) {
         message.channel.send(`${message.author} 봇 관리자 전용 메시지 입니다. 또는 실험중인 명령어 입니다.`)
+    } else {
+        message.channel.send(`${message.author} 아직은 그런거 모르는데..`)
     }
 
     msg = ''
