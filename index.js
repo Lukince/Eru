@@ -337,7 +337,7 @@ dscl.on("message", (message)=> {
         }
     } else if (message.author.id != '378535260754935819' && check[0] == prefix) {
         message.channel.send(`${message.author} 봇 관리자 전용 메시지 입니다. 또는 실험중인 명령어 입니다.`)
-    } else {
+    } else if (check[0] == prefix) {
         message.channel.send(`${message.author} 아직은 그런거 모르는데..`)
     }
 
