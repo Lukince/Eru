@@ -350,21 +350,29 @@ dscl.on("message", (message)=> {
         if (add == null) {
             return message.channel.send(`원하는 이모지를 써주세요 EX) :thinking:`)
         }
-        message.react(add)
-    }
-
-    if (cmd == `${prefix}타이핑`) {
-        message.channel.startTyping()
-    }
-
-    if (cmd == `${prefix}중지`) {
-        message.channel.stopTyping()
+        message.react(add).then(() => message.channel.send(`${message.author} ${add}반응을 달았습니다!`))
+            .catch(() => hook.send('349~354줄 반응 구문 오류'))
+            
     }
 
     if (message.isMentioned('538681468679880736')) {
         message.channel.send(`나불렀엉?`)
     }
 
+    if (message.author.id == '378535260754935819') {
+        if (cmd == `${prefix}타이핑`) {
+            message.channel.startTyping()
+        }
+
+        if (cmd == `${prefix}중지`) {
+            message.channel.stopTyping()
+        }
+
+        if (cmd == js) {
+            message.channel.send('https://discord.js.org/')
+        }
+    }
+    
     msg = ''
     ErrorCode = 0
 
