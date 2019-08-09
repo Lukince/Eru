@@ -72,7 +72,7 @@ dscl.on("message", (message)=> {
             .setFooter(version)
 
         message.author.send(InfoEmbed)
-    } else if (cmd == `${prefix}help or cmd == `${prefix}도움말`) {
+    } else if (cmd == `${prefix}도움말`) {
         if(add == '체크') {
             let checkHelp = new discord.RichEmbed()
                 .setColor("#ff9900")
