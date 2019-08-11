@@ -61,7 +61,7 @@ dscl.on("message", (message)=> {
     } else if (cmd == `${prefix}정보`) {
         if (add != null) {
             let UserInfoEmbed = new discord.RichEmbed()
-            let User = guild.member(add).then(() => console.log('add값 얻어오기 성공')).catch(() => message.author.send(`${message.author} 올바르지 않은 사용자 명입니다.`))
+            let User = message.guild.member(add).then(() => console.log('add값 얻어오기 성공')).catch(() => message.author.send(`${message.author} 올바르지 않은 사용자 명입니다.`))
                 .setTitle(`${User.username}님의 정보`)
                 .setImage(`${User.avatarURL}`)
                 .addField('서버 가입일', `${User.joinedAt}`)
