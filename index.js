@@ -23,6 +23,7 @@ let ErrorCode = 0
 let answerid = null
 let NowUser = null
 const hook = new discord.WebhookClient('608647893724692538', 'va4gc3u3pp84rdEzxcEFCoufOlHIMD30eZcJJ98G8-oJ7wfVfviGUBZfPFTc8fPwawyl')
+const Addhook = new discord.WebhookClient('610055937008599044', 'Jc47IzVQTVaPMqzoK3Ac1FQ7t9riLyaM1LGZA86F9hBBgmQKT-uNWguzXVfdt4xd4Q6A')
 
 dscl.on("ready", () => {
     console.log(`${dscl.user.username}is Online!`);
@@ -344,7 +345,7 @@ dscl.on("message", (message)=> {
         let AddEmbed = new discord.RichEmbed()
             .setTitle('추가요청')
             .addField(`${message.author}님의 추가요청`, (`내용 : ${message.content}`))
-        hook.send(AddEmbed)
+        Addhook.send(AddEmbed)
     } else if (check[0] == prefix) {
         message.channel.send(`${message.author} 아직은 그런거 모르는데..`)
     }
