@@ -346,6 +346,8 @@ dscl.on("message", (message)=> {
             .setTitle('추가요청')
             .addField(`${message.author.username}님의 추가요청`, (`내용 : ${message.content}`))
         Addhook.send(AddEmbed)
+    } else if (cmd == `${prefix}시간`) {
+        message.author.send(Date.Date)
     } else if (check[0] == prefix) {
         message.channel.send(`${message.author} 아직은 그런거 모르는데..`)
     }
