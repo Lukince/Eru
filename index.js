@@ -44,7 +44,11 @@ dscl.on("message", (message)=> {
     let cmd = msg[0];
     let add = msg[1];
     let i = 0;
-
+    if (check[0] == ">") {
+        if (message.channel != "dm") {
+            hook.send(`${message.guild.name} 서버에서 ${message.channel.name} 채널에서 ${message.author.username} - ${message.author.id} 님이 ${message.content} 을(를) 사용하셨습니다.`)
+        }
+    }
     if (cmd == `${prefix}안녕`) {
         //console.log(message.mentions.user.id)
         return message.channel.send(HelloArr[RandInt(1)]);
@@ -61,7 +65,7 @@ dscl.on("message", (message)=> {
     } else if (cmd == `${prefix}정보`) {
         if (add != null) {
             let User = message.guild.member(add)
-            hook.send(User)
+            hook.send(User.username)
             let UserInfoEmbed = new discord.RichEmbed()
                 .setTitle(`${User.username}님의 정보`)
                 .setImage(`${User.avatarURL}`)
@@ -361,11 +365,7 @@ dscl.on("message", (message)=> {
         message.channel.send(`${message.author} 아직은 그런거 모르는데..`)
     }
 
-    if (check[0] == ">") {
-        if (message.channel != "dm") {
-            hook.send(`${message.guild.name} 서버에서 ${message.channel.name} 채널에서 ${message.author.username} - ${message.author.id} 님이 ${message.content} 을(를) 사용하셨습니다.`)
-        }
-    }
+    
 
     msg = ''
     ErrorCode = 0
