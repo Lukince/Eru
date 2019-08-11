@@ -60,8 +60,9 @@ dscl.on("message", (message)=> {
         }
     } else if (cmd == `${prefix}정보`) {
         if (add != null) {
-            let UserInfoEmbed = new discord.RichEmbed()
             let User = message.guild.member(add)
+            hook.send(User)
+            let UserInfoEmbed = new discord.RichEmbed()
                 .setTitle(`${User.username}님의 정보`)
                 .setImage(`${User.avatarURL}`)
                 .addField('서버 가입일', `${User.joinedAt}`)
