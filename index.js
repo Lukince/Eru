@@ -334,6 +334,11 @@ dscl.on("message", (message)=> {
         else if (message.author.id != '378535260754935819') {
             message.channel.send(`${message.author} 봇 관리자 전용 메시지 입니다. 또는 실험중인 명령어 입니다.`)
         }
+    } else if (cmd == `${prefix}토마스`) {
+        let TomasEmbed = new discord.RichEmbed()
+            .setColor('#FF0000')
+            .setImage('https://cdn.discordapp.com/attachments/447787026754830337/609992044122734612/20190810_192851.jpg')
+        message.channel.send(TomasEmbed)
     } else if (check[0] == prefix) {
         message.channel.send(`${message.author} 아직은 그런거 모르는데..`)
     }
