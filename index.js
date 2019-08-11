@@ -60,14 +60,14 @@ dscl.on("message", (message)=> {
             return message.channel.send(`${message.author} 알수 없는 인수입니다. ">help 체크" 를 사용해 주세요.`);
         }
     } else if (cmd == `${prefix}정보`) {
-        if (add != null) {
+        if (add == message.author) {
             let UserInfoEmbed = new discord.RichEmbed()
-            let User = message.guild.members.get(add).then(() => console.log('add값 얻어오기 성공')).catch(() => message.author.send(`${message.author} 올바르지 않은 사용자 명입니다.`))
-                .setTitle(`${User.username}님의 정보`)
-                .setImage(`${User.avatarURL}`)
-                .addField('서버 가입일', `${User.joinedAt}`)
-                .addField('계정 생성일', `${User.creatAt}`)
-            message.channel.send(UserInfoEmbed).then(() => message.channel.send(`${message.author}, ${User.username}님의 정보입니다.`)).catch(() => console.log(`데이터를 불러오기에 실패했습니다.`))
+            //let User = message.guild.members.get(add).then(() => console.log('add값 얻어오기 성공')).catch(() => message.author.send(`${message.author} 올바르지 않은 사용자 명입니다.`))
+                .setTitle(`${message.author.username}님의 정보`)
+                .setImage(`${message.author.avatarURL}`)
+                .addField('서버 가입일', `${message.author.joinedAt}`)
+                .addField('계정 생성일', `${message.author.creatAt}`)
+            message.channel.send(UserInfoEmbed)
         }
         let InfoEmbed = new discord.RichEmbed()
             .setColor('#63a4ff')
