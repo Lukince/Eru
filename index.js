@@ -24,11 +24,11 @@ let answerid = null
 let NowUser = null
 const hook = new discord.WebhookClient('608647893724692538', 'va4gc3u3pp84rdEzxcEFCoufOlHIMD30eZcJJ98G8-oJ7wfVfviGUBZfPFTc8fPwawyl')
 const Addhook = new discord.WebhookClient('610055937008599044', 'Jc47IzVQTVaPMqzoK3Ac1FQ7t9riLyaM1LGZA86F9hBBgmQKT-uNWguzXVfdt4xd4Q6A')
-let Activity = `${discord.Client.guilds.size}개의 서버에서 ${discord.Client.memberCount}명이 사용중!`
+let Activity = `${dscl.guilds.array().length}개의 서버에서 ${dscl.guilds.memberCount}명이 사용중!`
 
 dscl.on("ready", () => {
     console.log(`${dscl.user.username}is Online!`);
-    dscl.user.setActivity(`${Activity}`, {type: "PLAYING"});
+    dscl.user.setActivity(Activity, {type: "PLAYING"});
 });
 
 dscl.on("message", (message)=> {
@@ -59,13 +59,13 @@ dscl.on("message", (message)=> {
             return message.channel.send(`${message.author} 알수 없는 인수입니다. ">help 체크" 를 사용해 주세요.`);
         }
     } else if (cmd == `${prefix}정보`) {
-        if (add == message.author) {
+        if (add != null) {
             let UserInfoEmbed = new discord.RichEmbed()
-            //let User = message.guild.members.get(add).then(() => console.log('add값 얻어오기 성공')).catch(() => message.author.send(`${message.author} 올바르지 않은 사용자 명입니다.`))
-                .setTitle(`${message.author.username}님의 정보`)
-                .setImage(`${message.author.avatarURL}`)
-                .addField('서버 가입일', `${message.author.joinedAt}`)
-                .addField('계정 생성일', `${message.author.creatAt}`)
+            let User = guild.member(add).then(() => console.log('add값 얻어오기 성공')).catch(() => message.author.send(`${message.author} 올바르지 않은 사용자 명입니다.`))
+                .setTitle(`${User.username}님의 정보`)
+                .setImage(`${User.avatarURL}`)
+                .addField('서버 가입일', `${User.joinedAt}`)
+                .addField('계정 생성일', `${User.creatAt}`)
             message.channel.send(UserInfoEmbed)
         }
         let InfoEmbed = new discord.RichEmbed()
