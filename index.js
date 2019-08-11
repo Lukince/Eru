@@ -42,7 +42,7 @@ dscl.on("message", (message)=> {
     let cmd = msg[0];
     let add = msg[1];
     let i = 0;
-    //let choose = message.content.split('"')  "를 기준으로 나눠서 선택과 투표 메세지 구현하기
+    let db = '378535260754935819'
 
     if (cmd == `${prefix}안녕`) {
         //console.log(message.mentions.user.id)
@@ -339,6 +339,12 @@ dscl.on("message", (message)=> {
             .setColor('#FF0000')
             .setImage('https://cdn.discordapp.com/attachments/447787026754830337/609992044122734612/20190810_192851.jpg')
         message.channel.send(TomasEmbed)
+    } else if (cmd == `${prefix}추가요청`) {
+        message.channel.send(`${message.author} 추가요청이 확인 되었습니다!`)
+        let AddEmbed = new discord.RichEmbed()
+            .setTitle('추가요청')
+            .addField(`${message.author}님의 추가요청`, (`내용 : ${message.content}`))
+        hook.send(AddEmbed)
     } else if (check[0] == prefix) {
         message.channel.send(`${message.author} 아직은 그런거 모르는데..`)
     }
