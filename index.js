@@ -24,7 +24,7 @@ let answerid = null
 let NowUser = null
 const hook = new discord.WebhookClient('608647893724692538', 'va4gc3u3pp84rdEzxcEFCoufOlHIMD30eZcJJ98G8-oJ7wfVfviGUBZfPFTc8fPwawyl')
 const Addhook = new discord.WebhookClient('610055937008599044', 'Jc47IzVQTVaPMqzoK3Ac1FQ7t9riLyaM1LGZA86F9hBBgmQKT-uNWguzXVfdt4xd4Q6A')
-let Activity = `${dscl.guilds.size}개의 서버에서 ${dscl.guilds.memberCount}명이 사용중!`
+let Activity = `${discord.Client.guilds.size}개의 서버에서 ${discord.Client.memberCount}명이 사용중!`
 
 dscl.on("ready", () => {
     console.log(`${dscl.user.username}is Online!`);
@@ -50,7 +50,6 @@ dscl.on("message", (message)=> {
         return message.channel.send(HelloArr[RandInt(1)]);
     } else if (cmd == `${prefix}체크`) {
         if (add == "출석") {
-
             return message.channel.send(`${message.author} 출석 체크 되었습니다!`);
         } else if (add == "서버") {
 
