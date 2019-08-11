@@ -24,7 +24,7 @@ let answerid = null
 let NowUser = null
 const hook = new discord.WebhookClient('608647893724692538', 'va4gc3u3pp84rdEzxcEFCoufOlHIMD30eZcJJ98G8-oJ7wfVfviGUBZfPFTc8fPwawyl')
 const Addhook = new discord.WebhookClient('610055937008599044', 'Jc47IzVQTVaPMqzoK3Ac1FQ7t9riLyaM1LGZA86F9hBBgmQKT-uNWguzXVfdt4xd4Q6A')
-let Activity = `${dscl.guilds.array().length}개의 서버에서 ${dscl.guilds.memberCount}명이 사용중!`
+let Activity = `${dscl.guilds.array().length}개의 서버에서 ${dscl.guilds.memberCount}명이 사용중!` //총 길드 수와 총 멤버들 구하기
 
 dscl.on("ready", () => {
     console.log(`${dscl.user.username}is Online!`);
@@ -64,13 +64,14 @@ dscl.on("message", (message)=> {
         }
     } else if (cmd == `${prefix}정보`) {
         if (add != null) {
-            let User = message.guild.member(add)
-            hook.send(User.username)
+            let User = message.mentions.users.first() || message.author
+            var usertime = moment(message.guild.members.get(user.id).user.createdAt).tz('Asia/Seoul');
+            var membertime = moment(message.member.joinedAt).tz('Asia/Seoul');
             let UserInfoEmbed = new discord.RichEmbed()
                 .setTitle(`${User.username}님의 정보`)
-                .setImage(`${User.avatarURL}`)
-                .addField('서버 가입일', `${User.joinedAt}`)
-                .addField('계정 생성일', `${User.creatAt}`)
+                .setImage(`${User.displayAvatarURL}`)
+                .addField('서버 가입일', `${membertime.format('YYYY MMM Do, h:mm:ss a')}`, true)
+                .addField('계정 생성일', `${usertime.format('YYYY MMM Do, h:mm:ss a')}`, false)
             message.channel.send(UserInfoEmbed)
         }
         let InfoEmbed = new discord.RichEmbed()
