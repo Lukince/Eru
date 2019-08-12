@@ -381,8 +381,8 @@ dscl.on("message", (message)=> {
         message.channel.send('https://giphy.com/gifs/UCkZPALajEs8M')
         message.channel.send('와! 샌즈!')
     } else if (cmd == `${prefix}소스`) {
-        message.channel.send('https://github.com/Lukince/Eru/blob/master/index.js')
-        message.channel.send('현재 EruBot은 Node.js에 대해 오픈소스를 제공하고 있습니다. 복붙하시면 맞아 죽습니다^^')
+        message.author.send('https://github.com/Lukince/Eru/blob/master/index.js')
+        message.author.send('현재 EruBot은 Node.js에 대해 오픈소스를 제공하고 있습니다. 복붙하시면 맞아 죽습니다^^')
     } else if (check[0] == prefix) {
         if (check[1] != " ") {
             message.channel.send(`> ${message.author} 아직은 그런거 모르는데..`)
