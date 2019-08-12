@@ -379,7 +379,9 @@ dscl.on("message", (message)=> {
         message.channel.send('https://giphy.com/gifs/UCkZPALajEs8M')
         message.channel.send('와! 샌즈!')
     } else if (check[0] == prefix) {
-        message.channel.send(`> ${message.author} 아직은 그런거 모르는데..`)
+        if (check[1] != " ") {
+            message.channel.send(`> ${message.author} 아직은 그런거 모르는데..`)
+        }
     }
 
     
