@@ -82,7 +82,7 @@ dscl.on("message", (message)=> {
 
         return message.author.send(InfoEmbed)
     }
-        var usertime = moment(message.guild.members.get(user.id).user.createdAt).tz('Asia/Seoul');
+        var usertime = moment(message.guild.members.get(User.id).user.createdAt).tz('Asia/Seoul');
         var membertime = moment(message.member.joinedAt).tz('Asia/Seoul');
         let UserInfoEmbed = new discord.RichEmbed()
             .setTitle(`${User.username}님의 정보`)
