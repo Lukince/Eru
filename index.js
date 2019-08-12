@@ -87,8 +87,9 @@ dscl.on("message", (message)=> {
         let UserInfoEmbed = new discord.RichEmbed()
             .setTitle(`${User.username}님의 정보`)
             .setImage(`${User.displayAvatarURL}`)
-            .addField('서버 가입일', `${membertime.format('YYYY MMM Do, h:mm:ss a')}`, true)
-            .addField('계정 생성일', `${usertime.format('YYYY MMM Do, h:mm:ss a')}`, false)
+            .addField('이름', `${User.username}`)
+            .addField('서버 가입일', `${membertime.format('YYYY MMM Do, h:mm:ss a')}`, false)
+            .addField('계정 생성일', `${usertime.format('YYYY MMM Do, h:mm:ss a')}`, true)
         message.channel.send(UserInfoEmbed)
     } else if (cmd == `${prefix}도움말`) {
         if(add == '체크') {
