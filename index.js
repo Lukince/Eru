@@ -71,7 +71,7 @@ dscl.on("message", (message)=> {
         let User = message.mentions.users.first() || message.author
         if (User.id == '538681468679880736') {
         let InfoEmbed = new discord.RichEmbed()
-            .setColor('#63a4ff')
+            .setColor(ColorArr[RandInt(11)])
             .setAuthor('Eru', 'https://i.imgur.com/5L8PU24.png', 'https://i.imgur.com/U0ZyRXa.png')
             .setTitle('정보')
             .setDescription('소통을 위한 봇')
