@@ -67,7 +67,7 @@ dscl.on("message", (message)=> {
         }
     } else if (cmd == `${prefix}정보`) {
         let User = message.mentions.users.first() || message.author
-        if (User.id == bot.id) {
+        if (User.id == '538681468679880736') {
         let InfoEmbed = new discord.RichEmbed()
             .setColor('#63a4ff')
             .setAuthor('Eru', 'https://i.imgur.com/5L8PU24.png', 'https://i.imgur.com/U0ZyRXa.png')
