@@ -375,6 +375,9 @@ dscl.on("message", (message)=> {
             .setColor(ColorArr[RandInt(11)])
             .addField('내용', '없찌롱~', true)
         message.channel.send(RandomEmbed)
+    } else if (cmd == `${prefix}샌즈`) {
+        message.channel.send('https://giphy.com/gifs/UCkZPALajEs8M')
+        message.channel.send('와! 샌즈!')
     } else if (check[0] == prefix) {
         message.channel.send(`> ${message.author} 아직은 그런거 모르는데..`)
     }
