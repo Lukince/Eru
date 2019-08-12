@@ -39,7 +39,7 @@ dscl.on("ready", () => {
 dscl.on("message", (message)=> {
 
     if(message.channel == "dm") {
-        message.author.send(`${}`)
+        return message.author.send(`${message.author} 나랑 1:1 대화는 불가능 하지롱~`)
     }
     if(message.author.bot) return;
 
