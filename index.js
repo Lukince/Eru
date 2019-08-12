@@ -63,17 +63,8 @@ dscl.on("message", (message)=> {
             return message.channel.send(`${message.author} 알수 없는 인수입니다. ">help 체크" 를 사용해 주세요.`);
         }
     } else if (cmd == `${prefix}정보`) {
-        if (add != null) {
-            let User = message.mentions.users.first() || message.author
-            var usertime = moment(message.guild.members.get(user.id).user.createdAt).tz('Asia/Seoul');
-            var membertime = moment(message.member.joinedAt).tz('Asia/Seoul');
-            let UserInfoEmbed = new discord.RichEmbed()
-                .setTitle(`${User.username}님의 정보`)
-                .setImage(`${User.displayAvatarURL}`)
-                .addField('서버 가입일', `${membertime.format('YYYY MMM Do, h:mm:ss a')}`, true)
-                .addField('계정 생성일', `${usertime.format('YYYY MMM Do, h:mm:ss a')}`, false)
-            message.channel.send(UserInfoEmbed)
-        }
+        let User = message.mentions.users.first() || message.author
+        if (User.id == bot.id) {
         let InfoEmbed = new discord.RichEmbed()
             .setColor('#63a4ff')
             .setAuthor('Eru', 'https://i.imgur.com/5L8PU24.png', 'https://i.imgur.com/U0ZyRXa.png')
@@ -86,7 +77,16 @@ dscl.on("message", (message)=> {
             .addField("추가 명령어", "추가 명령어 문의는 >추가요청 를 이용해 주세요")
             .setFooter(version)
 
-        message.author.send(InfoEmbed)
+        return message.author.send(InfoEmbed)
+    }
+        var usertime = moment(message.guild.members.get(user.id).user.createdAt).tz('Asia/Seoul');
+        var membertime = moment(message.member.joinedAt).tz('Asia/Seoul');
+        let UserInfoEmbed = new discord.RichEmbed()
+            .setTitle(`${User.username}님의 정보`)
+            .setImage(`${User.displayAvatarURL}`)
+            .addField('서버 가입일', `${membertime.format('YYYY MMM Do, h:mm:ss a')}`, true)
+            .addField('계정 생성일', `${usertime.format('YYYY MMM Do, h:mm:ss a')}`, false)
+        message.channel.send(UserInfoEmbed)
     } else if (cmd == `${prefix}도움말`) {
         if(add == '체크') {
             let checkHelp = new discord.RichEmbed()
