@@ -18,7 +18,7 @@ function print() {
 let PaperArr = ["가위", "바위", "보"]
 let HelloArr = ["안녕 난 이루야 :kissing_heart:", "안녀엉! :laughing:"]
 let RollArr = ["1", "2", "3", "4", "5", "6"]
-let version = 'Version 1.3.0 Patch Data : 2019/07/31'
+let version = 'Version 2.2.0 Patch Data : 2019/08/12'
 let CalcArr = ["+", "-", "×", "÷"]
 let ColorArr = ['#FF0000', '#FFA500', '#FFFF00', '#00FF00', '#008000', '#87ceeb', '#0000FF', '#800080', '#FFC0CB', '#ffffff', '#000000', '#808080'] 
                 //빨강, 주황, 노랑, 연두(라임), 초록, 하늘(skyblue), 파랑, 보라, 분홍, 하얀, 검정, 회색
@@ -82,7 +82,7 @@ dscl.on("message", (message)=> {
             .addField("추가 명령어", "추가 명령어 문의는 >추가요청 를 이용해 주세요")
             .setFooter(version)
 
-        return message.author.send(InfoEmbed)
+        return message.channel.send(InfoEmbed)
     }
         var usertime = moment(message.guild.members.get(User.id).user.createdAt).tz('Asia/Seoul');
         var membertime = moment(message.member.joinedAt).tz('Asia/Seoul');
@@ -354,10 +354,7 @@ dscl.on("message", (message)=> {
             message.channel.send(`${message.author} 봇 관리자 전용 메시지 입니다. 또는 실험중인 명령어 입니다.`)
         }
     } else if (cmd == `${prefix}js`) {
-        if (message.author.id == '378535260754935819') message.channel.send('https://discord.js.org/')
-        else if (message.author.id != '378535260754935819') {
-            message.channel.send(`${message.author} 봇 관리자 전용 메시지 입니다. 또는 실험중인 명령어 입니다.`)
-        }
+        message.channel.send('https://discord.js.org/')
     } else if (cmd == `${prefix}토마스`) {
         let TomasEmbed = new discord.RichEmbed()
             .setColor(ColorArr[RandInt(11)])
@@ -369,6 +366,12 @@ dscl.on("message", (message)=> {
             .setTitle('추가요청')
             .addField(`${message.author.username}님의 추가요청`, (`내용 : ${message.content}`))
         Addhook.send(AddEmbed)
+    } else if (cmd == `${prefix}Embed`) {
+        let RandomEmbed = new discord.RichEmbed()
+            .setTitle('무작위 Embed 소환!')
+            .setColor(ColorArr[RandInt(11)])
+            .addField('내용', '없찌롱~', true)
+        message.channel.send(RandomEmbed)
     } else if (check[0] == prefix) {
         message.channel.send(`> ${message.author} 아직은 그런거 모르는데..`)
     }
