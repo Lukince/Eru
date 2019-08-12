@@ -20,6 +20,8 @@ let HelloArr = ["안녕 난 이루야 :kissing_heart:", "안녀엉! :laughing:"]
 let RollArr = ["1", "2", "3", "4", "5", "6"]
 let version = 'Version 1.3.0 Patch Data : 2019/07/31'
 let CalcArr = ["+", "-", "×", "÷"]
+let ColorArr = ['#FF0000', '#FFA500', '#FFFF00', '#00FF00', '#008000', '#87ceeb', '#0000FF', '#800080', '#FFC0CB', '#ffffff', '#000000', '#808080'] 
+                //빨강, 주황, 노랑, 연두(라임), 초록, 하늘(skyblue), 파랑, 보라, 분홍, 하얀, 검정, 회색
 let answer = null
 let WaitAnswer = 0
 let ErrorCode = 0
@@ -86,16 +88,17 @@ dscl.on("message", (message)=> {
         var membertime = moment(message.member.joinedAt).tz('Asia/Seoul');
         let UserInfoEmbed = new discord.RichEmbed()
             .setTitle(`${User.username}님의 정보`)
+            .setColor(ColorArr[RandInt(11)])
             .setImage(`${User.displayAvatarURL}`)
-            .addField('이름', `${User.username}`, true)
-            .addField('서버 이름', `${User.nickname}`)
+            .addField('이름', `${User.username}`, false)
+            .addField('아이디', `${User.id}`, true)
             .addField('서버 가입일', `${membertime.format('YYYY MMM Do, h:mm:ss a')}`, false)
             .addField('계정 생성일', `${usertime.format('YYYY MMM Do, h:mm:ss a')}`, true)
         message.channel.send(UserInfoEmbed)
     } else if (cmd == `${prefix}도움말`) {
         if(add == '체크') {
             let checkHelp = new discord.RichEmbed()
-                .setColor("#ff9900")
+                .setColor(ColorArr[RandInt(11)])
                 .setTitle('>체크 [인수]')
                 .setAuthor('도움말 [체크]', 'https://i.imgur.com/wjV4Ab1.png')
                 .addBlankField()
@@ -106,7 +109,7 @@ dscl.on("message", (message)=> {
             message.author.send(checkHelp)
         } else if (add == '투표') {
             let voteHelp = new discord.RichEmbed()
-                .setColor('#08ff00')
+                .setColor(ColorArr[RandInt(11)])
                 .setTitle('>투표 ["인수"]')
                 .setAuthor('도움말 [투표]', 'https://i.imgur.com/wjV4Ab1.png')
                 .addBlankField()
@@ -116,7 +119,7 @@ dscl.on("message", (message)=> {
             message.author.send(voteHelp)
         } else if (add == '선택') {
             let chooseHelp = new discord.RichEmbed()
-                .setColor('#aa00ff')
+                .setColor(ColorArr[RandInt(11)])
                 .setTitle('>선택 .[인수] .[인수1] .[인수2] .{인수3} .{인수4}')
                 .setAuthor('도움말 [선택]', 'https://i.imgur.com/wjV4Ab1.png')
                 .addBlankField()
@@ -128,7 +131,7 @@ dscl.on("message", (message)=> {
             message.author.send(chooseHelp)
         } else if (add == null) {
             let helpEmbed = new discord.RichEmbed()
-                .setColor('#ff0000')
+                .setColor(ColorArr[RandInt(11)])
                 .setAuthor('도움말', 'https://i.imgur.com/wjV4Ab1.png')
                 .addBlankField()
                 .addField('안녕', '그저 봇이 당신에게 인사를 해줍니다.', true)
@@ -144,7 +147,7 @@ dscl.on("message", (message)=> {
             message.author.send(helpEmbed)
         } else if (add == '연산') {
             let CalcEmbed = new discord.RichEmbed()
-                .setColor('#00e5ff')
+                .setColor(ColorArr[RandInt(11)])
                 .setTitle('>연산    ㅣ    >답 [인수]')
                 .setAuthor('도움말 [연산]', 'https://i.imgur.com/wjV4Ab1.png')
                 .addBlankField()
@@ -181,6 +184,7 @@ dscl.on("message", (message)=> {
         else if (select[3] == null) message.channel.send(`${message.author} 인수는 최소 2개 이상이여야 합니다. 또는 인수값이 .(점)로 나뉘지 않았습니다.`)
         else if (select[4] == null) {
             let selectEmbed = new discord.RichEmbed()
+                .setColor(ColorArr[RandInt(11)])
                 .addField(topic, `목록:\nA:${select[2]}\nB:${select[3]}`);
 
             message.channel.send(selectEmbed).then(sentMessage => {
@@ -356,7 +360,7 @@ dscl.on("message", (message)=> {
         }
     } else if (cmd == `${prefix}토마스`) {
         let TomasEmbed = new discord.RichEmbed()
-            .setColor('#FF0000')
+            .setColor(ColorArr[RandInt(11)])
             .setImage('https://cdn.discordapp.com/attachments/447787026754830337/609992044122734612/20190810_192851.jpg')
         message.channel.send(TomasEmbed)
     } else if (cmd == `${prefix}추가요청`) {
@@ -366,7 +370,7 @@ dscl.on("message", (message)=> {
             .addField(`${message.author.username}님의 추가요청`, (`내용 : ${message.content}`))
         Addhook.send(AddEmbed)
     } else if (check[0] == prefix) {
-        message.channel.send(`${message.author} 아직은 그런거 모르는데..`)
+        message.channel.send(`> ${message.author} 아직은 그런거 모르는데..`)
     }
 
     
