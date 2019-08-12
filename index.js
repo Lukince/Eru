@@ -361,7 +361,8 @@ dscl.on("message", (message)=> {
             .addField(`${message.author.username}님의 추가요청`, (`내용 : ${message.content}`))
         Addhook.send(AddEmbed)
     } else if (cmd == `${prefix}시간`) {
-        message.author.send('구현중')
+        let Time = new Date()
+        message.author.send(`현재 시각 : ${Time}`)
     } else if (check[0] == prefix) {
         message.channel.send(`${message.author} 아직은 그런거 모르는데..`)
     }
