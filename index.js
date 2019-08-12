@@ -38,7 +38,9 @@ dscl.on("ready", () => {
 
 dscl.on("message", (message)=> {
 
-    if(message.channel == "dm") return;
+    if(message.channel == "dm") {
+        message.author.send(`${}`)
+    }
     if(message.author.bot) return;
 
     //const member = message.mentions.users.first();
@@ -361,6 +363,7 @@ dscl.on("message", (message)=> {
             .setImage('https://cdn.discordapp.com/attachments/447787026754830337/609992044122734612/20190810_192851.jpg')
         message.channel.send(TomasEmbed)
     } else if (cmd == `${prefix}추가요청`) {
+        message.react(':thumbsup:')
         message.channel.send(`${message.author} 추가요청이 확인 되었습니다!`)
         let AddEmbed = new discord.RichEmbed()
             .setTitle('추가요청')
