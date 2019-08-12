@@ -2,6 +2,9 @@ const discord = require('discord.js');
 const dscl = new discord.Client();
 const prefix = ">";
 const token = process.env.token;
+const moment = require('moment');
+require("moment-duration-format");
+require("moment-timezone");
 
 function RandInt(max) {
     return Math.round(Math.random() * max);
@@ -361,8 +364,9 @@ dscl.on("message", (message)=> {
             .addField(`${message.author.username}님의 추가요청`, (`내용 : ${message.content}`))
         Addhook.send(AddEmbed)
     } else if (cmd == `${prefix}시간`) {
-        let Time = new Date()
-        message.author.send(`현재 시각 : ${Time}`)
+        let Time = Date()
+        let Times = moment(Time).tz('Asia/Seuol')
+        message.author.send(`현재 시각 : ${Times}`)
     } else if (check[0] == prefix) {
         message.channel.send(`${message.author} 아직은 그런거 모르는데..`)
     }
