@@ -29,11 +29,11 @@ let answerid = null
 let NowUser = null
 const hook = new discord.WebhookClient('608647893724692538', 'va4gc3u3pp84rdEzxcEFCoufOlHIMD30eZcJJ98G8-oJ7wfVfviGUBZfPFTc8fPwawyl')
 const Addhook = new discord.WebhookClient('610055937008599044', 'Jc47IzVQTVaPMqzoK3Ac1FQ7t9riLyaM1LGZA86F9hBBgmQKT-uNWguzXVfdt4xd4Q6A')
-let Activity = `${dscl.guilds.array().length}개의 서버에서 ${dscl.guilds.memberCount}명이 사용중!` //총 길드 수와 총 멤버들 구하기
+//let Activity = `${dscl.guilds.array().length}개의 서버에서 ${dscl.guilds.memberCount}명이 사용중!` //총 길드 수와 총 멤버들 구하기
 
 dscl.on("ready", () => {
     console.log(`${dscl.user.username}is Online!`);
-    dscl.user.setActivity(Activity, {type: "PLAYING"});
+    dscl.user.setActivity('Making Server | >도움말', {type: "PLAYING"});
 });
 
 dscl.on("message", (message)=> {
