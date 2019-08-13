@@ -411,7 +411,7 @@ dscl.on("message", (message)=> {
     } else if (cmd == `${prefix}AddRole`) {
         if (message.author.id == '378535260754935819') {
             if (add == null) (`${message.author} 인수가 존재하지 않습니다.`)
-            guild.createRole({
+            message.guild.createRole({
                 name: select[1],
                 color: select[2],
               })
