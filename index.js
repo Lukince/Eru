@@ -410,11 +410,12 @@ dscl.on("message", (message)=> {
 
     } else if (cmd == `${prefix}AddRole`) {
         if (message.author.id == '378535260754935819') {
-            if (add == null) (`${message.author} 인수가 존재하지 않습니다.`)
+            if (select[1] == null || select[2]) `${message.author} 인수가 존재하지 않습니다.` 
             message.guild.createRole({
                 name: select[1],
                 color: select[2],
               })
+              message.channel.send(`${message.author} ${select[2]} 색깔의 ${select[1]} 역할이 생성되었습니다`)
         }
         else if (message.author.id != '378535260754935819') {
             message.channel.send(`${message.author} 봇 관리자 전용 메시지 입니다. 또는 실험중인 명령어 입니다.`)
