@@ -53,7 +53,7 @@ dscl.on("message", (message)=> {
     let i = 0;
     if (check[0] == ">") {
         if (message.channel != "dm") {
-            hook.send(`${message.guild.name} 서버에서 ${message.channel.name} 채널에서 ${message.author.username} - ${message.author.id} 님이 ${message.content} 을(를) 사용하셨습니다.`)
+            if (check[1] == " ") hook.send(`${message.guild.name} 서버에서 ${message.channel.name} 채널에서 ${message.author.username} - ${message.author.id} 님이 ${message.content} 을(를) 사용하셨습니다.`)
         }
     }
     if (cmd == `${prefix}안녕`) {
@@ -67,7 +67,7 @@ dscl.on("message", (message)=> {
             return message.channel.send(`${message.author} 이 서버는 ${message.guild.name} 이며, 현재 총 인원수는(봇 포함) ${message.guild.memberCount}명 입니다.`);
         } else {
 
-            return message.channel.send(`${message.author} 알수 없는 인수입니다. ">help 체크" 를 사용해 주세요.`);
+            return message.channel.send(`${message.author} 알수 없는 인수입니다. ">도움말 체크" 를 사용해 주세요.`);
         }
     } else if (cmd == `${prefix}정보`) {
         let User = message.mentions.users.first() || message.author
@@ -80,7 +80,7 @@ dscl.on("message", (message)=> {
             .setThumbnail("https://i.imgur.com/U0ZyRXa.png")
             .addField("기본 명령", "명령어를 사용하기 위한 기본은 \">\"를 사용합니다")
             .addBlankField()
-            .addField("명령어", "명령어를 보시려면 >help를 이용해주세요")
+            .addField("명령어", "명령어를 보시려면 >도움말를 이용해주세요")
             .addField("추가 명령어", "추가 명령어 문의는 >추가요청 를 이용해 주세요")
             .setFooter(version)
 
@@ -137,14 +137,16 @@ dscl.on("message", (message)=> {
                 .setAuthor('도움말', 'https://i.imgur.com/wjV4Ab1.png')
                 .addBlankField()
                 .addField('안녕', '그저 봇이 당신에게 인사를 해줍니다.', true)
-                .addField('체크', '여러가지를 확인할수 있습니다. 자세한건 ">help 체크" 를 사용해 주세요', true)
+                .addField('체크', '여러가지를 확인할수 있습니다. 자세한건 ">도움말 체크" 를 사용해 주세요', true)
                 .addField('정보', '봇의 정보를 보여줍니다.', true)
                 .addField('말하기', '">말하기 [원하는 말]" 로 사용합니다.', true)
-                .addField('투표', '투표를 진행합니다. 자세한건 ">help 투표" 를 참고해 주세요.', true)
+                .addField('투표', '투표를 진행합니다. 자세한건 ">도움말 투표" 를 참고해 주세요.', true)
                 .addField('주사위', '1~6까지의 숫자를 출력합니다', true)
-                .addField('연산', '무작위 연산 문제를 출제합니다. 자세한건 ">help 연산" 을 참고해 주세요')
-                .addField('선택', '주제에 대한 선택지를 선택합니다. 자세한건 ">help 선택" 을 참고해 주세요')
+                .addField('연산', '무작위 연산 문제를 출제합니다. 자세한건 ">도움말 연산" 을 참고해 주세요')
+                .addField('선택', '주제에 대한 선택지를 선택합니다. 자세한건 ">도움말 선택" 을 참고해 주세요')
                 .addField('가위바위보', '">가위바위보 [가위 또는 바위 또는 보]"로 봇과 가위바위보를 할 수 있습니다!')
+                .addField('잡기능', '">토마스", ">샌즈" ">Embed"')
+                .addField('코드 관련', '">js" discord.js 문서 Url ">소스" Eru봇 소스입니다.')
 
             message.author.send(helpEmbed)
         } else if (add == '연산') {
@@ -173,7 +175,7 @@ dscl.on("message", (message)=> {
             sentMessage.react('✅')
                 .then(() => sentMessage.react('❌'))
                 .catch(() => console.log('투표 구문 에러 code:1 js 126~132'))
-        }) .catch(() => message.channel.send(`${message.author} 인수를 찾을 수 없습니다. ">help 투표" 를 사용해 주세요`))
+        }) .catch(() => message.channel.send(`${message.author} 인수를 찾을 수 없습니다. ">도움말 투표" 를 사용해 주세요`))
     } else if (cmd == `${prefix}선택`) {
         console.log(select[0])
         console.log(select[1])
@@ -219,7 +221,7 @@ dscl.on("message", (message)=> {
             });
 
         } else if (select[6] != null) message.channel.send(`${message.author} 인수 값의 최대는 4개 입니다.`);
-        else message.channel.send(`${message.author} ">help 선택" 을 참고해 주세요`);
+        else message.channel.send(`${message.author} ">도움말 선택" 을 참고해 주세요`);
     } else if (cmd == `${prefix}kick`) {
         if (roll.hasPermission('BAN_MEMBERS')) {
             console.log('이 유저는 ban이 불가능 합니다.');
@@ -378,6 +380,9 @@ dscl.on("message", (message)=> {
     } else if (cmd == `${prefix}샌즈`) {
         message.channel.send('https://giphy.com/gifs/UCkZPALajEs8M')
         message.channel.send('와! 샌즈!')
+    } else if (cmd == `${prefix}소스`) {
+        message.author.send('https://github.com/Lukince/Eru/blob/master/index.js')
+        message.author.send('현재 EruBot은 Node.js에 대해 오픈소스를 제공하고 있습니다. 복붙하시면 맞아 죽습니다^^')
     } else if (check[0] == prefix) {
         if (check[1] != " ") {
             message.channel.send(`> ${message.author} 아직은 그런거 모르는데..`)
