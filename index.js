@@ -277,7 +277,7 @@ dscl.on("message", (message)=> {
             } else if (Calc == "×") {
                 answer = FirstNum * SecondNum
             } else if (Calc == "÷") {
-                answer = Math.round(FirstNum / SecondNum)
+                answer = (Math.round((FirstNum / SecondNum) * 100))/100
             } else {
                 ErrorCode = 1
             }
