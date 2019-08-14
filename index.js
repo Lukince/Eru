@@ -38,7 +38,7 @@ dscl.on("ready", () => {
 
 dscl.on("message", (message)=> {
 
-    if(message.channel == "dm") {
+    if(message.channel == 'DM') {
         return message.author.send(`${message.author} 나랑 1:1 대화는 불가능 하지롱~`)
     }
     if(message.author.bot) return;
@@ -276,6 +276,14 @@ dscl.on("message", (message)=> {
                 answer = FirstNum * SecondNum
             } else if (Calc == "÷") {
                 answer = FirstNum / SecondNum
+                let Temp = null
+                let splitAnswer = answer.split(".")
+                let AnswerInt = str(splitAnswer[0]).size
+                let splitAnswers = answer.split("")
+                for (var i=0; i < AnswerInt; i++) {
+                    Temp += str(splitAnswers[i])
+                }
+                answer = Temp
             } else {
                 ErrorCode = 1
             }
