@@ -26,6 +26,7 @@ let WaitAnswer = 0
 let ErrorCode = 0
 let answerid = null
 let NowUser = null
+let NowGuild = null
 var answer = 0.00
 const hook = new discord.WebhookClient('608647893724692538', 'va4gc3u3pp84rdEzxcEFCoufOlHIMD30eZcJJ98G8-oJ7wfVfviGUBZfPFTc8fPwawyl')
 const Addhook = new discord.WebhookClient('610055937008599044', 'Jc47IzVQTVaPMqzoK3Ac1FQ7t9riLyaM1LGZA86F9hBBgmQKT-uNWguzXVfdt4xd4Q6A')
@@ -261,6 +262,8 @@ dscl.on("message", (message)=> {
     } else if (cmd == `${prefix}연산`) {
         if (WaitAnswer == 0) {
             NowUser = message.author.username
+            NowGuild = message.guild.name
+            NowChannel = message.channel
             answerid = message.author.id
             FirstNum = RandInt(100)
             SecondNum = RandInt(99) + 1
@@ -275,33 +278,18 @@ dscl.on("message", (message)=> {
             } else if (Calc == "×") {
                 answer = FirstNum * SecondNum
             } else if (Calc == "÷") {
-                answer = FirstNum / SecondNum
-                let StringAnswer = toString(answer)
-                console.log(`${StringAnswer} ${answer}`)
-                let Temp = 0
-                let splitAnswer = toString(answer).split(".")
-                let AnswerInt = toString(splitAnswer[0]).size
-                let splitAnswers = toString(answer).split("")
-                console.log(`${Temp} ${splitAnswer[0]} ${AnswerInt} ${splitAnswers[0]}`)
-                for (var fori=0; fori > AnswerInt; fori++) {
-                    if (fori == 0) {
-                        Temp = toString(splitAnswers[0])
-                    } else Temp += toString(splitAnswers[fori])
-                    console.log(`${Temp} ${toString(splitAnswers[fori])}`)
-                }
-                answer = Temp
-               //answer(변수)를 split 할수 있는 명령어를 찾기 또는 조건 찾기
+                answer = Math.round(FirstNum / SecondNum)
             } else {
                 ErrorCode = 1
             }
             if (ErrorCode == 0){
-                message.channel.send(`${FirstNum} ${Calc} ${SecondNum} = 🤔`)
+                NowChannel.send(`${FirstNum} ${Calc} ${SecondNum} = 🤔`)
                 WaitAnswer = 1
             } else if (ErrorCode == 1) {
                 message.channel.send(`예기치 않은 오류로 인해 종료됩니다.`)
             }
         } else if (WaitAnswer == 1) {
-            return message.channel.send(`${NowUser}님이 문제를 풀고 있습니다.`)
+            return message.channel.send(`${NowGuild}에서 ${NowUser}님이 문제를 풀고 있습니다.`)
         } 
     } else if (cmd == `${prefix}답` && WaitAnswer == 1 && message.author.id == answerid) {
         if (add == null) {
