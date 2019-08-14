@@ -52,7 +52,7 @@ dscl.on("message", (message)=> {
     let add = msg[1];
     let i = 0;
 
-    const filter = m => m.content.split(" ") == `${prefix}연산`
+    /*const filter = m => m.content.split(" ") == `${prefix}연산`
     if (WaitAnswer == 1) {
         message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
             .then(collected => console.log(``))
@@ -61,7 +61,7 @@ dscl.on("message", (message)=> {
                 WaitAnswer = 0
             });
         }
-
+*/
     if (check[0] == "^") {
         if (message.channel != "dm") {
             if (check[1] == " ") hook.send(`${message.guild.name} 서버에서 ${message.channel.name} 채널에서 ${message.author.username} - ${message.author.id} 님이 ${message.content} 을(를) 사용하셨습니다.`)
