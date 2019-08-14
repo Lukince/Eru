@@ -276,6 +276,7 @@ dscl.on("message", (message)=> {
                 answer = FirstNum * SecondNum
             } else if (Calc == "÷") {
                 answer = FirstNum / SecondNum
+                console.log(`${toString(answer)}`)
                 let Temp = 0
                 let splitAnswer = toString(answer).split(".")
                 let AnswerInt = toString(splitAnswer[0]).size
