@@ -263,10 +263,10 @@ dscl.on("message", (message)=> {
             NowUser = message.author.username
             answerid = message.author.id
             FirstNum = RandInt(100)
-            SecondNum = RandInt(100)
+            SecondNum = RandInt(99) + 1
             Calc = CalcArr[RandInt(3)]
-            if (Calc == "÷" && SecondNum == 0) {
-                ErrorCode = -1
+            if (add == '/') {
+                Calc = "÷"
             }
             if (Calc == "+") {
                 answer = FirstNum + SecondNum
@@ -276,16 +276,15 @@ dscl.on("message", (message)=> {
                 answer = FirstNum * SecondNum
             } else if (Calc == "÷") {
                 answer = FirstNum / SecondNum
-                /*
                 let Temp = null
-                let splitAnswer = answer.split(".")
+                let splitAnswer = str(answer).split(".")
                 let AnswerInt = str(splitAnswer[0]).size
-                let splitAnswers = answer.split("")
+                let splitAnswers = str(answer).split("")
                 for (var fori=0; fori > AnswerInt; fori++) {
                     Temp += str(splitAnswers[i])
                 }
                 answer = Temp
-                */
+               //answer(변수)를 split 할수 있는 명령어를 찾기 또는 조건 찾기
             } else {
                 ErrorCode = 1
             }
@@ -294,8 +293,6 @@ dscl.on("message", (message)=> {
                 WaitAnswer = 1
             } else if (ErrorCode == 1) {
                 message.channel.send(`예기치 않은 오류로 인해 종료됩니다.`)
-            } else if (ErrorCode == -1) {
-                message.channel.send(`변수 선언 오류 명령어를 다시 사용해주시길 바랍니다.`)
             }
         } else if (WaitAnswer == 1) {
             return message.channel.send(`${NowUser}님이 문제를 풀고 있습니다.`)
