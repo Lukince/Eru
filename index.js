@@ -280,7 +280,7 @@ dscl.on("message", (message)=> {
                 let splitAnswer = answer.split(".")
                 let AnswerInt = str(splitAnswer[0]).size
                 let splitAnswers = answer.split("")
-                for (var i=0; i < AnswerInt; i++) {
+                for (var fori=0; fori > AnswerInt; fori++) {
                     Temp += str(splitAnswers[i])
                 }
                 answer = Temp
