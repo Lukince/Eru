@@ -52,16 +52,19 @@ dscl.on("message", (message)=> {
     let add = msg[1];
     let i = 0;
 
-    /*const filter = m => m.content.split(" ") == `${prefix}연산`
+    const filter = m => m.content.split(" ") == `${prefix}연산`
     if (WaitAnswer == 1) {
         message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
             .then(collected => console.log(``))
             .catch(collected => {
-                message.channel.send(`문제를 입력한지 30초가 지났습니다. 공용 사용을 위해 문제를 종료합니다.`)
+                if (WaitAnswer == 1) {
+                    message.channel.send(`문제를 입력한지 30초가 지났습니다. 공용 사용을 위해 문제를 종료합니다.`)
+                    return WaitAnswer = 0
+                }
                 WaitAnswer = 0
             });
         }
-*/
+
     if (check[0] == "^") {
         if (message.channel != "dm") {
             if (check[1] == " ") hook.send(`${message.guild.name} 서버에서 ${message.channel.name} 채널에서 ${message.author.username} - ${message.author.id} 님이 ${message.content} 을(를) 사용하셨습니다.`)
@@ -297,6 +300,8 @@ dscl.on("message", (message)=> {
             if (add == answer) {
                 message.channel.send(`:white_check_mark:정답입니다! 나의 답 : ${add} 정답 : ${answer}`)
                 WaitAnswer = 0
+            } else if (add == '🤔') {
+                message.author.send(process.env.egg)
             } else if (add != answer) {
                 message.channel.send(`:x:틀렸습니다. 나의 답 : ${add} 정답 : ${answer}`)
                 WaitAnswer = 0
