@@ -123,7 +123,6 @@ dscl.on("message", (message)=> {
                 .setAuthor('도움말 [체크]', 'https://i.imgur.com/wjV4Ab1.png')
                 .addBlankField()
                 .addField('^체크 출석', '서버에서 출석을 할수 있습니다. ~~아직 무의미 합니다.~~')
-                .addField('^체크 관리자', '서버의 최종 관리자를 알려드립니다. ~~불완전한 기능~~')
                 .addField('^체크 서버', '서버에 대한 정보를 확인합니다.')
 
             message.author.send(checkHelp)
@@ -249,12 +248,12 @@ dscl.on("message", (message)=> {
         } else if (select[6] != null) message.channel.send(`${message.author} 인수 값의 최대는 4개 입니다.`);
         else message.channel.send(`${message.author} "^도움말 선택" 을 참고해 주세요`);
 
-    } else if (cmd == `${prefix}kick`) {
+    /*} else if (cmd == `${prefix}kick`) {
         if (roll.hasPermission('BAN_MEMBERS')) {
             console.log('이 유저는 ban이 불가능 합니다.');
             return;
         }
-        console.log('이 유저는 ban이 가능합니다.');
+        console.log('이 유저는 ban이 가능합니다.');*/
 
     } else if (cmd == `${prefix}주사위`) {
         return message.channel.send(RollArr[RandInt(5)]);
