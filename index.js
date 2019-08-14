@@ -56,8 +56,10 @@ dscl.on("message", (message)=> {
     if (WaitAnswer == 1) {
         message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
             .then(collected => console.log(``))
-            .catch(collected => message.channel.send(`문제를 입력한지 30초가 지났습니다. 공용 사용을 위해 문제를 종료합니다.`) );
-        WaitAnswer = 0
+            .catch(collected => {
+                message.channel.send(`문제를 입력한지 30초가 지났습니다. 공용 사용을 위해 문제를 종료합니다.`)
+                WaitAnswer = 0
+            });
         }
 
     if (check[0] == "^") {
