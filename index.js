@@ -277,11 +277,11 @@ dscl.on("message", (message)=> {
             } else if (Calc == "÷") {
                 answer = FirstNum / SecondNum
                 let Temp = null
-                let splitAnswer = str(answer).split(".")
-                let AnswerInt = str(splitAnswer[0]).size
-                let splitAnswers = str(answer).split("")
+                let splitAnswer = toString(answer).split(".")
+                let AnswerInt = toString(splitAnswer[0]).size
+                let splitAnswers = toString(answer).split("")
                 for (var fori=0; fori > AnswerInt; fori++) {
-                    Temp += str(splitAnswers[i])
+                    Temp += toString(splitAnswers[i])
                 }
                 answer = Temp
                //answer(변수)를 split 할수 있는 명령어를 찾기 또는 조건 찾기
