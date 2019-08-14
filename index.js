@@ -22,11 +22,11 @@ let version = 'Version 2.2.0 Patch Data : 2019/08/12'
 let CalcArr = ["+", "-", "×", "÷"]
 let ColorArr = ['#FF0000', '#FFA500', '#FFFF00', '#00FF00', '#008000', '#87ceeb', '#0000FF', '#800080', '#FFC0CB', '#ffffff', '#000000', '#808080'] 
                 //빨강, 주황, 노랑, 연두(라임), 초록, 하늘(skyblue), 파랑, 보라, 분홍, 하얀, 검정, 회색
-let answer = null
 let WaitAnswer = 0
 let ErrorCode = 0
 let answerid = null
 let NowUser = null
+var answer = 0.00
 const hook = new discord.WebhookClient('608647893724692538', 'va4gc3u3pp84rdEzxcEFCoufOlHIMD30eZcJJ98G8-oJ7wfVfviGUBZfPFTc8fPwawyl')
 const Addhook = new discord.WebhookClient('610055937008599044', 'Jc47IzVQTVaPMqzoK3Ac1FQ7t9riLyaM1LGZA86F9hBBgmQKT-uNWguzXVfdt4xd4Q6A')
 //let Activity = `${dscl.guilds.array().length}개의 서버에서 ${dscl.guilds.memberCount}명이 사용중!` //총 길드 수와 총 멤버들 구하기
@@ -54,11 +54,11 @@ dscl.on("message", (message)=> {
 
     const filter = m => m.content.split(" ") == `${prefix}연산`
     if (WaitAnswer == 1) {
-        message.channel.awaitMessages(filter, { max: 1, time: 15000, errors: ['time'] })
+        message.channel.awaitMessages(filter, { max: 1, time: 20000, errors: ['time'] })
             .then(collected => console.log(``))
             .catch(collected => {
                 if (WaitAnswer == 1) {
-                    message.channel.send(`문제를 입력한지 15초가 지났습니다. 공용 사용을 위해 문제를 종료합니다.`)
+                    message.channel.send(`문제를 입력한지 20초가 지났습니다. 공용 사용을 위해 문제를 종료합니다.`)
                     return WaitAnswer = 0
                 }
                 WaitAnswer = 0
@@ -289,7 +289,7 @@ dscl.on("message", (message)=> {
             }
         } else if (WaitAnswer == 1) {
             return message.channel.send(`${NowUser}님이 문제를 풀고 있습니다.`)
-        }
+        } 
     } else if (cmd == `${prefix}답` && WaitAnswer == 1 && message.author.id == answerid) {
         if (add == null) {
             message.channel.send("답을 입력해 주세요.")
