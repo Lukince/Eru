@@ -280,10 +280,12 @@ dscl.on("message", (message)=> {
                 let splitAnswer = toString(answer).split(".")
                 let AnswerInt = toString(splitAnswer[0]).size
                 let splitAnswers = toString(answer).split("")
+                console.log(`${Temp} ${splitAnswer[0]} ${AnswerInt} ${splitAnswers[0]}`)
                 for (var fori=0; fori > AnswerInt; fori++) {
                     if (fori == 0) {
                         Temp = toString(splitAnswers[0])
                     } else Temp += toString(splitAnswers[fori])
+                    console.log(`${Temp} ${toString(splitAnswers[fori])}`)
                 }
                 answer = Temp
                //answer(변수)를 split 할수 있는 명령어를 찾기 또는 조건 찾기
