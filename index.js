@@ -451,7 +451,7 @@ dscl.on("message", (message)=> {
         message.author.send('현재 EruBot은 Node.js에 대해 오픈소스를 제공하고 있습니다. 복붙 안할꺼죠..? :kissing_closed_eyes:')
 
     } else if (cmd == `${prefix}패치내역`) {
-        let PatchEmbed = new discord.RichEmbed
+        let PatchEmbed = new discord.RichEmbed()
             .setTitle(`현재 리소스 버전 : ${version}`)
             .addField('패치 내역 3.1.0', '이제부터 패치노트 기록이 시작됩니다. ^패치내역 으로 어떠한 패치가 이루어 졌는지 확인 할 수 있습니다.')
             .addField('주사위 개편', '이제부터 ^주사위 를 사용하면 숫자가 아닌 이모지로 대체되서 나옵니다!')
@@ -460,6 +460,7 @@ dscl.on("message", (message)=> {
             .setColor(ColorArr[RandInt(11)])
             .setImage('https://i.imgur.com/jmj8ud9.png')
             .setFooter(version)
+        message.channel.send(PatchEmbed)
     } else if (check[0] == prefix) {
         if (check[1] != " ") {
             message.channel.send(`> ${message.author} 아직은 그런거 모르는데..`)
