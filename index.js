@@ -395,7 +395,7 @@ client.on("message", (message)=> {
             .catch(() => hook.send('349~354줄 반응 구문 오류'))
             
     } else if (message.isMentioned('538681468679880736')) {
-        message.channel.send(`나불렀엉?`)
+        if (message.guild.id != 514078116537303050) message.channel.send(`나불렀엉?`)
 
     } else if (cmd == `${prefix}타이핑`) {
         if (message.author.id == '378535260754935819') return message.channel.startTyping()
