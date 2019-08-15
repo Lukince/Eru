@@ -17,7 +17,7 @@ function print() {
 
 let PaperArr = ["가위", "바위", "보"]
 let HelloArr = ["안녕 난 이루야 :kissing_heart:", "안녀엉! :laughing:"]
-let version = 'Version 2.2.0 Patch Data : 2019/08/12'
+let version = 'Version 3.1.0 Patch Data : 2019/08/15'
 let CalcArr = ["+", "-", "×", "÷"]
 let ColorArr = ['#FF0000', '#FFA500', '#FFFF00', '#00FF00', '#008000', '#87ceeb', '#0000FF', '#800080', '#FFC0CB', '#ffffff', '#000000', '#808080'] 
                 //빨강, 주황, 노랑, 연두(라임), 초록, 하늘(skyblue), 파랑, 보라, 분홍, 하얀, 검정, 회색
@@ -33,7 +33,7 @@ const Addhook = new discord.WebhookClient('610055937008599044', 'Jc47IzVQTVaPMqz
 
 dscl.on("ready", () => {
     console.log(`${dscl.user.username}is Online!`);
-    dscl.user.setActivity('Making Server | ^도움말', {type: "PLAYING"});
+    dscl.user.setActivity('^패치내역 | ^도움말', {type: "PLAYING"});
 });
 
 dscl.on("message", (message)=> {
@@ -448,8 +448,18 @@ dscl.on("message", (message)=> {
 
     } else if (cmd == `${prefix}소스`) {
         message.author.send('https://github.com/Lukince/Eru/blob/master/index.js')
-        message.author.send('현재 EruBot은 Node.js에 대해 오픈소스를 제공하고 있습니다. 복붙하시면 맞아 죽습니다^^')
+        message.author.send('현재 EruBot은 Node.js에 대해 오픈소스를 제공하고 있습니다. 복붙 안할꺼죠..? :kissing_closed_eyes:')
 
+    } else if (cmd == `${prefix}패치내역`) {
+        let PatchEmbed = new discord.RichEmbed
+            .setTitle(`현재 리소스 버전 : ${version}`)
+            .addField('패치 내역 3.1.0', '이제부터 패치노트 기록이 시작됩니다. ^패치내역 으로 어떠한 패치가 이루어 졌는지 확인 할 수 있습니다.')
+            .addField('주사위 개편', '이제부터 ^주사위 를 사용하면 숫자가 아닌 이모지로 대체되서 나옵니다!')
+            .addField('연산 개편', '이제부터 ^연산 사용에 ÷(나누기)가 나올 경우 소숫점 둘째 자리에서 반올림 하여 값을 나타냅니다!')
+            .addField('이스터에그', '이스터에그가 추가되었습니다. 한번 찾아보세요!')
+            .setColor(ColorArr[RandInt(11)])
+            .setImage('https://i.imgur.com/jmj8ud9.png')
+            .setFooter(version)
     } else if (check[0] == prefix) {
         if (check[1] != " ") {
             message.channel.send(`> ${message.author} 아직은 그런거 모르는데..`)
