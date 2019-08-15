@@ -20,7 +20,7 @@ let HelloArr = ["안녕 난 이루야 :kissing_heart:", "안녀엉! :laughing:"]
 let version = 'Version 3.1.1 Patch Data : 2019/08/15'
                     //       대버전         .        중버전      .     소버전
                     //3개 이상의 명령어 생성 . 1~2개의 명령어 생성 . 간단한 오류 수정
-let SetupVersion = 'Version 3.1.1b Patch Data : 2019/08/15 10:'
+let SetupVersion = 'Version 3.1.1b Patch Data : 2019/08/15 10:37:00'
 let CalcArr = ["+", "-", "×", "÷"]
 let ColorArr = ['#FF0000', '#FFA500', '#FFFF00', '#00FF00', '#008000', '#87ceeb', '#0000FF', '#800080', '#FFC0CB', '#ffffff', '#000000', '#808080'] 
                 //빨강, 주황, 노랑, 연두(라임), 초록, 하늘(skyblue), 파랑, 보라, 분홍, 하얀, 검정, 회색
@@ -457,23 +457,25 @@ client.on("message", (message)=> {
     } else if (cmd == `${prefix}패치내역`) {
         if (add == '개발자') {
             let SetupEmbed = new discord.RichEmbed()
-            .setTitle(`리소스 버전 : ${SetupVersion}`)
-            .setColor(ColorArr[RandInt(11)])
-            .addField('패치 내역 3.1.1b')
-            .addField('업타임 변경', 'Uptime이 밀리세컨드 단위에서 hours(시간)단위로 변경')
+                .setTitle(`리소스 버전 : ${SetupVersion}`)
+                .setColor(ColorArr[RandInt(11)])
+                .addField('패치 내역 3.1.1b')
+                .addField('업타임 변경', 'Uptime이 밀리세컨드 단위에서 hours(시간)단위로 변경')
+                .addField('Embed 수정', '패치내역 Embed작동 오류로 인해 수정')
+            message.channel.send(PatchEmbed)
         } else {
             let PatchEmbed = new discord.RichEmbed()
-            .setTitle(`현재 리소스 버전 : ${version}`)
-            .setThumbnail('https://i.imgur.com/jmj8ud9.png')
-            .addField('패치 내역 3.1.0', '이제부터 패치노트 기록이 시작됩니다. ^패치내역 으로 어떠한 패치가 이루어 졌는지 확인 할 수 있습니다.')
-            .addField('주사위 개편', '이제부터 ^주사위 를 사용하면 숫자가 아닌 이모지로 대체되서 나옵니다!')
-            .addField('연산 개편', '이제부터 ^연산 사용에 ÷(나누기)가 나올 경우 소숫점 둘째 자리에서 반올림 하여 값을 나타냅니다!')
-            .addField('이스터에그', '이스터에그가 추가되었습니다. 한번 찾아보세요!')
-            .addField('패치 내역 3.1.1', '패치내역에 Uptime(구동시간)이 표시됨')
-            .setColor(ColorArr[RandInt(11)])
-            .setFooter(`패치 이후 uptime : ${uptime}`)
+                .setTitle(`현재 리소스 버전 : ${version}`)
+                .setThumbnail('https://i.imgur.com/jmj8ud9.png')
+                .addField('패치 내역 3.1.0', '이제부터 패치노트 기록이 시작됩니다. ^패치내역 으로 어떠한 패치가 이루어 졌는지 확인 할 수 있습니다.')
+                .addField('주사위 개편', '이제부터 ^주사위 를 사용하면 숫자가 아닌 이모지로 대체되서 나옵니다!')
+                .addField('연산 개편', '이제부터 ^연산 사용에 ÷(나누기)가 나올 경우 소숫점 둘째 자리에서 반올림 하여 값을 나타냅니다!')
+                .addField('이스터에그', '이스터에그가 추가되었습니다. 한번 찾아보세요!')
+                .addField('패치 내역 3.1.1', '패치내역에 Uptime(구동시간)이 표시됨')
+                .setColor(ColorArr[RandInt(11)])
+                .setFooter(`패치 이후 uptime : ${uptime}`)
+            message.channel.send(PatchEmbed)
         }
-        message.channel.send(PatchEmbed)
     } else if (check[0] == prefix) {
         if (check[1] != " ") {
             message.channel.send(`> ${message.author} 아직은 그런거 모르는데..`)
