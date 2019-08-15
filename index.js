@@ -453,7 +453,7 @@ dscl.on("message", (message)=> {
     } else if (cmd == `${prefix}패치내역`) {
         let PatchEmbed = new discord.RichEmbed()
             .setTitle(`현재 리소스 버전 : ${version}`)
-            .setImage('https://i.imgur.com/jmj8ud9.png')
+            .setThumbnail('https://i.imgur.com/jmj8ud9.png')
             .addField('패치 내역 3.1.0', '이제부터 패치노트 기록이 시작됩니다. ^패치내역 으로 어떠한 패치가 이루어 졌는지 확인 할 수 있습니다.')
             .addField('주사위 개편', '이제부터 ^주사위 를 사용하면 숫자가 아닌 이모지로 대체되서 나옵니다!')
             .addField('연산 개편', '이제부터 ^연산 사용에 ÷(나누기)가 나올 경우 소숫점 둘째 자리에서 반올림 하여 값을 나타냅니다!')
