@@ -3,6 +3,7 @@ const client = new discord.Client();
 const prefix = "^";
 const token = process.env.token;
 const moment = require('moment');
+const collection = new discord.Collection();
 require("moment-duration-format");
 require("moment-timezone");
 
@@ -30,20 +31,19 @@ let answerid = null
 let NowUser = null
 let NowGuild = null
 var answer = 0.00
+let Activity = collection.every().valueOf.length
 const hook = new discord.WebhookClient('608647893724692538', 'va4gc3u3pp84rdEzxcEFCoufOlHIMD30eZcJJ98G8-oJ7wfVfviGUBZfPFTc8fPwawyl')
 const Addhook = new discord.WebhookClient('610055937008599044', 'Jc47IzVQTVaPMqzoK3Ac1FQ7t9riLyaM1LGZA86F9hBBgmQKT-uNWguzXVfdt4xd4Q6A')
 //let Activity = `${client.guilds.array().length}개의 서버에서 ${client.guilds.memberCount}명이 사용중!` //총 길드 수와 총 멤버들 구하기
 
 client.on("ready", () => {
     console.log(`${client.user.username}is Online!`);
-    client.user.setActivity('^패치내역 | ^도움말', {type: "PLAYING"});
+    client.user.setActivity(`^패치내역 | ^도움말 | ${Activity}`, {type: "PLAYING"});
 });
 
 client.on("message", (message)=> {
 
-    if(message.channel == 'DM') {
-        return message.author.send(`${message.author} 나랑 1:1 대화는 불가능 하지롱~`)
-    }
+    if(message.channel == 'dm') return;
     if(message.author.bot) return;
 
     //const member = message.mentions.users.first();
