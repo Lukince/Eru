@@ -18,6 +18,9 @@ function print() {
 let PaperArr = ["가위", "바위", "보"]
 let HelloArr = ["안녕 난 이루야 :kissing_heart:", "안녀엉! :laughing:"]
 let version = 'Version 3.1.1 Patch Data : 2019/08/15'
+                    //       대버전         .        중버전      .     소버전
+                    //3개 이상의 명령어 생성 . 1~2개의 명령어 생성 . 간단한 오류 수정
+let SetupVersion = 'Version 3.1.1b Patch Data : 2019/08/15 10:'
 let CalcArr = ["+", "-", "×", "÷"]
 let ColorArr = ['#FF0000', '#FFA500', '#FFFF00', '#00FF00', '#008000', '#87ceeb', '#0000FF', '#800080', '#FFC0CB', '#ffffff', '#000000', '#808080'] 
                 //빨강, 주황, 노랑, 연두(라임), 초록, 하늘(skyblue), 파랑, 보라, 분홍, 하얀, 검정, 회색
@@ -51,7 +54,7 @@ client.on("message", (message)=> {
     let cmd = msg[0];
     let add = msg[1];
     let i = 0;
-    let uptime = client.uptime
+    let uptime = moment().hours(client.uptime)
 
     const filter = m => m.content.split(" ") == `${prefix}연산`
     if (WaitAnswer == 1) {
@@ -452,7 +455,14 @@ client.on("message", (message)=> {
         message.author.send('현재 EruBot은 Node.js에 대해 오픈소스를 제공하고 있습니다. 복붙 안할꺼죠..? :kissing_closed_eyes:')
 
     } else if (cmd == `${prefix}패치내역`) {
-        let PatchEmbed = new discord.RichEmbed()
+        if (add == '개발자') {
+            let SetupEmbed = new discord.RichEmbed()
+            .setTitle(`리소스 버전 : ${SetupVersion}`)
+            .setColor(ColorArr[RandInt(11)])
+            .addField('패치 내역 3.1.1b')
+            .addField('업타임 변경', 'Uptime이 밀리세컨드 단위에서 hours(시간)단위로 변경')
+        } else {
+            let PatchEmbed = new discord.RichEmbed()
             .setTitle(`현재 리소스 버전 : ${version}`)
             .setThumbnail('https://i.imgur.com/jmj8ud9.png')
             .addField('패치 내역 3.1.0', '이제부터 패치노트 기록이 시작됩니다. ^패치내역 으로 어떠한 패치가 이루어 졌는지 확인 할 수 있습니다.')
@@ -462,6 +472,7 @@ client.on("message", (message)=> {
             .addField('패치 내역 3.1.1', '패치내역에 Uptime(구동시간)이 표시됨')
             .setColor(ColorArr[RandInt(11)])
             .setFooter(`패치 이후 uptime : ${uptime}`)
+        }
         message.channel.send(PatchEmbed)
     } else if (check[0] == prefix) {
         if (check[1] != " ") {
