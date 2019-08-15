@@ -6,6 +6,9 @@ const moment = require('moment');
 const collection = new discord.Collection();
 require("moment-duration-format");
 require("moment-timezone");
+const ytdl = require('ytdl-core');
+const streamOptions = { seek: 0, volume: 1 };
+const broadcast = client.createVoiceBroadcast();
 
 function RandInt(max) {
     return Math.round(Math.random() * max);
@@ -31,14 +34,14 @@ let answerid = null
 let NowUser = null
 let NowGuild = null
 var answer = 0.00
-let Activity = collection.every().valueOf.length
+//let Activity = collection.get
 const hook = new discord.WebhookClient('608647893724692538', 'va4gc3u3pp84rdEzxcEFCoufOlHIMD30eZcJJ98G8-oJ7wfVfviGUBZfPFTc8fPwawyl')
 const Addhook = new discord.WebhookClient('610055937008599044', 'Jc47IzVQTVaPMqzoK3Ac1FQ7t9riLyaM1LGZA86F9hBBgmQKT-uNWguzXVfdt4xd4Q6A')
 //let Activity = `${client.guilds.array().length}개의 서버에서 ${client.guilds.memberCount}명이 사용중!` //총 길드 수와 총 멤버들 구하기
 
 client.on("ready", () => {
     console.log(`${client.user.username}is Online!`);
-    client.user.setActivity(`^패치내역 | ^도움말 | ${Activity}`, {type: "PLAYING"});
+    client.user.setActivity(`^패치내역 | ^도움말`, {type: "PLAYING"});
 });
 
 client.on("message", (message)=> {
@@ -476,6 +479,16 @@ client.on("message", (message)=> {
                 .setFooter(`패치 이후 uptime : ${uptime}`)
             message.channel.send(PatchEmbed)
         }
+    } else if (cmd == `${prefix}play`) {
+        let MusicUrl = add
+        voiceChannel.join()
+            .then(connection => {
+                const stream = ytdl(add, { filter : 'audioonly' });
+                broadcast.playStream(stream);
+                const dispatcher = connection.playBroadcast(broadcast);
+            })
+            .catch(console.error);
+
     } else if (check[0] == prefix) {
         if (check[1] != " ") {
             message.channel.send(`> ${message.author} 아직은 그런거 모르는데..`)
