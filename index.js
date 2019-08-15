@@ -462,7 +462,7 @@ client.on("message", (message)=> {
                 .addField('패치 내역 3.1.1b')
                 .addField('업타임 변경', 'Uptime이 밀리세컨드 단위에서 hours(시간)단위로 변경')
                 .addField('Embed 수정', '패치내역 Embed작동 오류로 인해 수정')
-            message.channel.send(PatchEmbed)
+            message.channel.send(SetupEmbed)
         } else {
             let PatchEmbed = new discord.RichEmbed()
                 .setTitle(`현재 리소스 버전 : ${version}`)
