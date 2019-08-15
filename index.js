@@ -1,5 +1,5 @@
 const discord = require('discord.js');
-const dscl = new discord.Client();
+const client = new discord.Client();
 const prefix = "^";
 const token = process.env.token;
 const moment = require('moment');
@@ -29,14 +29,14 @@ let NowGuild = null
 var answer = 0.00
 const hook = new discord.WebhookClient('608647893724692538', 'va4gc3u3pp84rdEzxcEFCoufOlHIMD30eZcJJ98G8-oJ7wfVfviGUBZfPFTc8fPwawyl')
 const Addhook = new discord.WebhookClient('610055937008599044', 'Jc47IzVQTVaPMqzoK3Ac1FQ7t9riLyaM1LGZA86F9hBBgmQKT-uNWguzXVfdt4xd4Q6A')
-//let Activity = `${dscl.guilds.array().length}개의 서버에서 ${dscl.guilds.memberCount}명이 사용중!` //총 길드 수와 총 멤버들 구하기
+//let Activity = `${client.guilds.array().length}개의 서버에서 ${client.guilds.memberCount}명이 사용중!` //총 길드 수와 총 멤버들 구하기
 
-dscl.on("ready", () => {
-    console.log(`${dscl.user.username}is Online!`);
-    dscl.user.setActivity('^패치내역 | ^도움말', {type: "PLAYING"});
+client.on("ready", () => {
+    console.log(`${client.user.username}is Online!`);
+    client.user.setActivity('^패치내역 | ^도움말', {type: "PLAYING"});
 });
 
-dscl.on("message", (message)=> {
+client.on("message", (message)=> {
 
     if(message.channel == 'DM') {
         return message.author.send(`${message.author} 나랑 1:1 대화는 불가능 하지롱~`)
@@ -476,4 +476,4 @@ dscl.on("message", (message)=> {
 
 });
 
-dscl.login(token).catch(err => console.log(err));
+client.login(token).catch(err => console.log(err));
