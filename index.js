@@ -9,7 +9,7 @@ require("moment-timezone");
 const ytdl = require('ytdl-core');
 const streamOptions = { seek: 0, volume: 1 };
 const broadcast = client.createVoiceBroadcast();
-const voiceChannel = discord.VoiceChannel
+const voiceChannel = discord.VoiceChannel()
 
 function RandInt(max) {
     return Math.round(Math.random() * max);
