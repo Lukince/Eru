@@ -17,7 +17,6 @@ function print() {
 
 let PaperArr = ["가위", "바위", "보"]
 let HelloArr = ["안녕 난 이루야 :kissing_heart:", "안녀엉! :laughing:"]
-let RollArr = ["1", "2", "3", "4", "5", "6"]
 let version = 'Version 2.2.0 Patch Data : 2019/08/12'
 let CalcArr = ["+", "-", "×", "÷"]
 let ColorArr = ['#FF0000', '#FFA500', '#FFFF00', '#00FF00', '#008000', '#87ceeb', '#0000FF', '#800080', '#FFC0CB', '#ffffff', '#000000', '#808080'] 
@@ -56,10 +55,10 @@ dscl.on("message", (message)=> {
     const filter = m => m.content.split(" ") == `${prefix}연산`
     if (WaitAnswer == 1) {
         message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
-            .then(collected => message.channel.send(`걸린시간 : ${collected.time}`))
+            .then(collected => NowChannel.send(`걸린시간 : ${collected.time}`))
             .catch(collected => {
                 if (WaitAnswer == 1) {
-                    message.channel.send(`문제를 입력한지 30초가 지났습니다. 공용 사용을 위해 문제를 종료합니다.`)
+                    NowChannel.send(`문제를 입력한지 30초가 지났습니다. 공용 사용을 위해 문제를 종료합니다.`)
                     return WaitAnswer = 0
                 }
                 WaitAnswer = 0
@@ -256,7 +255,14 @@ dscl.on("message", (message)=> {
         console.log('이 유저는 ban이 가능합니다.');*/
 
     } else if (cmd == `${prefix}주사위`) {
-        return message.channel.send(RollArr[RandInt(5)]);
+        let Roll = RandInt(5) + 1;
+        if (Roll == 1) message.channel.send(':one:')
+        else if (Roll == 2) message.channel.send(':two:')
+        else if (Roll == 3) message.channel.send(':three:')
+        else if (Roll == 4) message.channel.send(':four:')
+        else if (Roll == 5) message.channel.send(':five:')
+        else if (Roll == 6) message.channel.send(':six:')
+        else message.channel.send(`예기치 않은 오류 발생!`)
 
     } else if (cmd == `${prefix}연산`) {
         if (WaitAnswer == 0) {
