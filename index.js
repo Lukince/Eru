@@ -54,7 +54,7 @@ client.on("message", (message)=> {
     let cmd = msg[0];
     let add = msg[1];
     let i = 0;
-    let uptime = moment().hours(client.uptime)
+    let uptime = moment().hour(client.uptime)
 
     const filter = m => m.content.split(" ") == `${prefix}연산`
     if (WaitAnswer == 1) {
