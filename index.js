@@ -22,10 +22,10 @@ function print() {
 
 let PaperArr = ["가위", "바위", "보"]
 let HelloArr = ["안녕 난 이루야 :kissing_heart:", "안녀엉! :laughing:"]
-let version = 'Version 3.2.0 Patch Data : 2019/08/17'
-                    //       대버전         .        중버전      .     소버전
+let version = 'Version 3.2.0f Patch Data : 2019/08/17'
+                    //     대버전(베타)     .    중버전(베타)     .  소버전(베타)
                     //3개 이상의 명령어 생성 . 1~2개의 명령어 생성 . 간단한 오류 수정
-let SetupVersion = 'Version 3.2.0e Patch Data : 2019/08/17'
+                    //베타 기준 : 개발중의 명령어 수정은 베타, 개발중이 아니였던 오류 수정은 소버전
 let CalcArr = ["+", "-", "×", "÷"]
 let ColorArr = ['#FF0000', '#FFA500', '#FFFF00', '#00FF00', '#008000', '#87ceeb', '#0000FF', '#800080', '#FFC0CB', '#ffffff', '#000000', '#808080'] 
                 //빨강, 주황, 노랑, 연두(라임), 초록, 하늘(skyblue), 파랑, 보라, 분홍, 하얀, 검정, 회색
@@ -462,15 +462,19 @@ client.on("message", (message)=> {
         if (add == '개발자' || add == '관리자') {
             if (message.author.id != '378535260754935819') return message.channel.send('봇을 관리할 수 있는 사람이 아닙니다.')
             let SetupEmbed = new discord.RichEmbed()
-                .setTitle(`리소스 버전 : ${SetupVersion}`)
+                .setTitle(`리소스 버전 : ${Version}`)
                 .setColor(ColorArr[RandInt(11)])
-                .addField('패치 내역 3.1.1b')
+                .addField('패치 내역 3.1.1')
                 .addField('업타임 변경', 'Uptime이 밀리세컨드 단위에서 hours(시간)단위로 변경')
                 .addField('Embed 수정', '패치내역 Embed작동 오류로 인해 수정')
+                .addBlankField()
+                .addField('패치 내역 3.2.0')
                 .addField('uptime 수정', 'Uptime을 moment 함수 사용에서 Sec로 단위 변경')
                 .addField('소수', '오류 발생으로 수정')
                 .addField('패치내역', '개발자 패치내역 Dm전송 및 개발자 전용 사용 가능 개발자 및 관리자로도 사용가능')
                 .addField('소수', '소수명령어 조건문 변경')
+                .addField('소수', '소수명령어 조건문 오류로 다시 수정')
+                .addField('패치', '패치내역 또는 패치노트로도 사용가능 일반 패치노트도 자세한 버전으로 표시')
             message.author.send(SetupEmbed)
             message.channel.send(`DM으로 전송되었습니다.`)
         } else {
@@ -502,8 +506,7 @@ client.on("message", (message)=> {
         let prime = 2
         let IsPrime = true
         let TempPrime = `약수는 `
-        message.channel.send(add)
-        if (add % 2 == 1 || add % 2 == 2) return message.channel.send(`숫자가 정수가 아닙니다!`)
+        if (add % 2 != 1 || add % 2 != 2) return message.channel.send(`숫자가 정수가 아닙니다!`)
         if (add < 1) return message.channel.send(`인수가 1보다 작습니다!`)
         while (add == prime) {
             if (Number.isInteger(add / prime)) {
