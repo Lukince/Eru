@@ -25,7 +25,7 @@ let HelloArr = ["안녕 난 이루야 :kissing_heart:", "안녀엉! :laughing:"]
 let version = 'Version 3.2.0 Patch Data : 2019/08/17'
                     //       대버전         .        중버전      .     소버전
                     //3개 이상의 명령어 생성 . 1~2개의 명령어 생성 . 간단한 오류 수정
-let SetupVersion = 'Version 3.2.0b Patch Data : 2019/08/17'
+let SetupVersion = 'Version 3.2.0c Patch Data : 2019/08/17'
 let CalcArr = ["+", "-", "×", "÷"]
 let ColorArr = ['#FF0000', '#FFA500', '#FFFF00', '#00FF00', '#008000', '#87ceeb', '#0000FF', '#800080', '#FFC0CB', '#ffffff', '#000000', '#808080'] 
                 //빨강, 주황, 노랑, 연두(라임), 초록, 하늘(skyblue), 파랑, 보라, 분홍, 하얀, 검정, 회색
@@ -468,7 +468,9 @@ client.on("message", (message)=> {
                 .addField('Embed 수정', '패치내역 Embed작동 오류로 인해 수정')
                 .addField('uptime 수정', 'Uptime을 moment 함수 사용에서 Sec로 단위 변경')
                 .addField('소수', '오류 발생으로 수정')
-            message.channel.send(SetupEmbed)
+                .addField('소수', '소수명령어 조건문 변경')
+            message.author.send(SetupEmbed)
+            message.channel.send(`DM으로 전송되었습니다.`)
         } else {
             let PatchEmbed = new discord.RichEmbed()
                 .setTitle(`현재 리소스 버전 : ${version}`)
@@ -498,6 +500,7 @@ client.on("message", (message)=> {
         let prime = 2
         let IsPrime = true
         let TempPrime = `약수는 `
+        message.channel.send(add)
         if (isNaN(add) == false) return message.channel.send(`인수가 숫자가 아닙니다!`)
         if (Number.isInteger(add) == false) return message.channel.send(`숫자가 정수가 아닙니다!`)
         if (add < 1) return message.channel.send(`인수가 1보다 작습니다!`)
