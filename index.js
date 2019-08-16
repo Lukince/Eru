@@ -25,7 +25,7 @@ let HelloArr = ["안녕 난 이루야 :kissing_heart:", "안녀엉! :laughing:"]
 let version = 'Version 3.2.0 Patch Data : 2019/08/17'
                     //       대버전         .        중버전      .     소버전
                     //3개 이상의 명령어 생성 . 1~2개의 명령어 생성 . 간단한 오류 수정
-let SetupVersion = 'Version 3.2.0c Patch Data : 2019/08/17'
+let SetupVersion = 'Version 3.2.0d Patch Data : 2019/08/17'
 let CalcArr = ["+", "-", "×", "÷"]
 let ColorArr = ['#FF0000', '#FFA500', '#FFFF00', '#00FF00', '#008000', '#87ceeb', '#0000FF', '#800080', '#FFC0CB', '#ffffff', '#000000', '#808080'] 
                 //빨강, 주황, 노랑, 연두(라임), 초록, 하늘(skyblue), 파랑, 보라, 분홍, 하얀, 검정, 회색
@@ -459,7 +459,8 @@ client.on("message", (message)=> {
         message.author.send('현재 EruBot은 Node.js에 대해 오픈소스를 제공하고 있습니다. 복붙 안할꺼죠..? :kissing_closed_eyes:')
 
     } else if (cmd == `${prefix}패치내역`) {
-        if (add == '개발자') {
+        if (add == '개발자' || add == '관리자') {
+            if (message.author.id != '378535260754935819') return message.channel.send('봇을 관리할 수 있는 사람이 아닙니다.')
             let SetupEmbed = new discord.RichEmbed()
                 .setTitle(`리소스 버전 : ${SetupVersion}`)
                 .setColor(ColorArr[RandInt(11)])
@@ -468,6 +469,7 @@ client.on("message", (message)=> {
                 .addField('Embed 수정', '패치내역 Embed작동 오류로 인해 수정')
                 .addField('uptime 수정', 'Uptime을 moment 함수 사용에서 Sec로 단위 변경')
                 .addField('소수', '오류 발생으로 수정')
+                .addField('패치내역', '개발자 패치내역 Dm전송 및 개발자 전용 사용 가능 개발자 및 관리자로도 사용가능')
                 .addField('소수', '소수명령어 조건문 변경')
             message.author.send(SetupEmbed)
             message.channel.send(`DM으로 전송되었습니다.`)
