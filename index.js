@@ -458,7 +458,7 @@ client.on("message", (message)=> {
         message.author.send('https://github.com/Lukince/Eru/blob/master/index.js')
         message.author.send('현재 EruBot은 Node.js에 대해 오픈소스를 제공하고 있습니다. 복붙 안할꺼죠..? :kissing_closed_eyes:')
 
-    } else if (cmd == `${prefix}패치내역`) {
+    } else if (cmd == `${prefix}패치내역` || cmd == `${prefix}패치노트`) {
         if (add == '개발자' || add == '관리자') {
             if (message.author.id != '378535260754935819') return message.channel.send('봇을 관리할 수 있는 사람이 아닙니다.')
             let SetupEmbed = new discord.RichEmbed()
