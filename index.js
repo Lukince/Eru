@@ -9,7 +9,7 @@ require("moment-timezone");
 const ytdl = require('ytdl-core');
 const streamOptions = { seek: 0, volume: 1 };
 const broadcast = client.createVoiceBroadcast();
-const voiceChannel = new discord.VoiceChannel()
+//const voiceChannel = new discord.VoiceChannel()
 
 function RandInt(max) {
     return Math.round(Math.random() * max);
@@ -480,6 +480,7 @@ client.on("message", (message)=> {
                 .setFooter(`패치 이후 uptime : ${uptime}`)
             message.channel.send(PatchEmbed)
         }
+        /*
     } else if (cmd == `${prefix}play`) {
         voiceChannel.join()
             .then(connection => {
@@ -488,7 +489,7 @@ client.on("message", (message)=> {
                 const dispatcher = connection.playBroadcast(broadcast);
             })
             .catch(console.error);
-
+*/
     } else if (check[0] == prefix) {
         if (check[1] != " ") {
             message.channel.send(`> ${message.author} 아직은 그런거 모르는데..`)
