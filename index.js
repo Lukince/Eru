@@ -506,7 +506,8 @@ client.on("message", (message)=> {
         let prime = 2
         let IsPrime = true
         let TempPrime = `약수는 `
-        if (add % 2 != 1 || add % 2 != 2) return message.channel.send(`숫자가 정수가 아닙니다!`)
+        message.channel.send(add % 2)
+        if (add % 2 != 1 || add % 2 != 0) return message.channel.send(`숫자가 정수가 아닙니다!`)
         if (add < 1) return message.channel.send(`인수가 1보다 작습니다!`)
         while (add == prime) {
             if (Number.isInteger(add / prime)) {
