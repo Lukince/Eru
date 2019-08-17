@@ -63,7 +63,7 @@ client.on("message", (message)=> {
     const filter = m => m.content.split(" ") == `${prefix}연산`
     if (WaitAnswer == 1) {
         message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
-            .then(collected => NowCannel.send(`${NowUser}님이 문제를 푸는 중입니다.`)))
+            .then(collected => NowCannel.send(`${NowUser}님이 문제를 푸는 중입니다.`))
             .catch(collected => {
                 if (WaitAnswer == 1) {
                     NowChannel.send(`문제를 입력한지 30초가 지났습니다. 공용 사용을 위해 문제를 종료합니다.`)
