@@ -22,7 +22,7 @@ function print() {
 
 let PaperArr = ["가위", "바위", "보"]
 let HelloArr = ["안녕 난 이루야 :kissing_heart:", "안녀엉! :laughing:"]
-let version = 'Version 3.1b.1f Patch Data : 2019/08/17'
+let version = 'Version 3.1b.2f Patch Data : 2019/08/17'
                     //     대버전(베타)     .    중버전(베타)     .  소버전(베타)
                     //3개 이상의 명령어 생성 . 1~2개의 명령어 생성 . 간단한 오류 수정
                     //베타 기준 : 개발중의 명령어 수정은 베타, 개발중이 아니였던 오류 수정은 소버전
@@ -63,7 +63,7 @@ client.on("message", (message)=> {
     const filter = m => m.content.split(" ") == `${prefix}연산`
     if (WaitAnswer == 1) {
         message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
-            .then(collected => NowChannel.send(`걸린시간 : ${collected.time}`))
+            .then(collected => NowCannel.send(`${NowUser}님이 문제를 푸는 중입니다.`)))
             .catch(collected => {
                 if (WaitAnswer == 1) {
                     NowChannel.send(`문제를 입력한지 30초가 지났습니다. 공용 사용을 위해 문제를 종료합니다.`)
@@ -476,6 +476,7 @@ client.on("message", (message)=> {
                 .addField('소수', '소수명령어 조건문 오류로 다시 수정')
                 .addField('패치', '패치내역 또는 패치노트로도 사용가능 일반 패치노트도 자세한 버전으로 표시')
                 .addField('버전 하락', '소수 명령어 문제로 3.2.0에서 3.1.1로 버전 보류')
+                .addField('패치 버전 3.1.2', '연산 걸린시간 명령어 삭제 및 대체')
             message.author.send(SetupEmbed)
             message.channel.send(`DM으로 전송되었습니다.`)
         } else {
@@ -487,6 +488,7 @@ client.on("message", (message)=> {
                 .addField('연산 개편', '이제부터 ^연산 사용에 ÷(나누기)가 나올 경우 소숫점 둘째 자리에서 반올림 하여 값을 나타냅니다!')
                 .addField('이스터에그', '이스터에그가 추가되었습니다. 한번 찾아보세요!')
                 .addField('패치 내역 3.1.1', '패치내역에 Uptime(구동시간)이 표시됨')
+                .addField('패치 내역 3.1.2', '연산 명령어 오류 수정')
                 //.addField('패치 내역 3.2.0', '소수 판단 명령어 생성. ^소수 로 사용 가능')
                 .setColor(ColorArr[RandInt(11)])
                 .setFooter(`패치 이후 uptime : ${uptime}Sec`)
