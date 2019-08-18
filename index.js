@@ -22,7 +22,7 @@ function print() {
 
 let PaperArr = ["가위", "바위", "보"]
 let HelloArr = ["안녕 난 이루야 :kissing_heart:", "안녀엉! :laughing:"]
-let version = 'Version 3.1b.2f Patch Data : 2019/08/17'
+let version = 'Version 3.1b.2g Patch Data : 2019/08/17'
                     //     대버전(베타)     .    중버전(베타)     .  소버전(베타)
                     //3개 이상의 명령어 생성 . 1~2개의 명령어 생성 . 간단한 오류 수정
                     //베타 기준 : 개발중의 명령어 수정은 베타, 개발중이 아니였던 오류 수정은 소버전
@@ -462,7 +462,7 @@ client.on("message", (message)=> {
         if (add == '개발자' || add == '관리자') {
             if (message.author.id != '378535260754935819') return message.channel.send('봇을 관리할 수 있는 사람이 아닙니다.')
             let SetupEmbed = new discord.RichEmbed()
-                .setTitle(`리소스 버전 : ${Version}`)
+                .setTitle(`리소스 버전 : ${version}`)
                 .setColor(ColorArr[RandInt(11)])
                 .addField('패치 내역 3.1.1')
                 .addField('업타임 변경', 'Uptime이 밀리세컨드 단위에서 hours(시간)단위로 변경')
