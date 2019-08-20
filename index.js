@@ -23,10 +23,10 @@ function print() {
 
 let PaperArr = ["가위", "바위", "보"]
 let HelloArr = ["안녕 난 이루야 :kissing_heart:", "안녀엉! :laughing:"]
-let version = 'Version 3.1.1 Patch Data : 2019/08/15'
-                    //       대버전         .        중버전      .     소버전
+let version = 'Version 3.1b.2g Patch Data : 2019/08/17'
+                    //     대버전(베타)     .    중버전(베타)     .  소버전(베타)
                     //3개 이상의 명령어 생성 . 1~2개의 명령어 생성 . 간단한 오류 수정
-let SetupVersion = 'Version 3.1.1b Patch Data : 2019/08/15 10:37:00'
+                    //베타 기준 : 개발중의 명령어 수정은 베타, 개발중이 아니였던 오류 수정은 소버전
 let CalcArr = ["+", "-", "×", "÷"]
 let ColorArr = ['#FF0000', '#FFA500', '#FFFF00', '#00FF00', '#008000', '#87ceeb', '#0000FF', '#800080', '#FFC0CB', '#ffffff', '#000000', '#808080'] 
                 //빨강, 주황, 노랑, 연두(라임), 초록, 하늘(skyblue), 파랑, 보라, 분홍, 하얀, 검정, 회색
@@ -59,12 +59,12 @@ client.on("message", (message)=> {
     let cmd = msg[0];
     let add = msg[1];
     let i = 0;
-    let uptime = moment().hour(client.uptime)
+    let uptime = client.uptime / 1000
 
     const filter = m => m.content.split(" ") == `${prefix}연산`
     if (WaitAnswer == 1) {
         message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
-            .then(collected => NowChannel.send(`걸린시간 : ${collected.time}`))
+            .then(collected => NowCannel.send(`${NowUser}님이 문제를 푸는 중입니다.`))
             .catch(collected => {
                 if (WaitAnswer == 1) {
                     NowChannel.send(`문제를 입력한지 30초가 지났습니다. 공용 사용을 위해 문제를 종료합니다.`)
@@ -459,15 +459,27 @@ client.on("message", (message)=> {
         message.author.send('https://github.com/Lukince/Eru/blob/master/index.js')
         message.author.send('현재 EruBot은 Node.js에 대해 오픈소스를 제공하고 있습니다. 복붙 안할꺼죠..? :kissing_closed_eyes:')
 
-    } else if (cmd == `${prefix}패치내역`) {
-        if (add == '개발자') {
+    } else if (cmd == `${prefix}패치내역` || cmd == `${prefix}패치노트`) {
+        if (add == '개발자' || add == '관리자') {
+            if (message.author.id != '378535260754935819') return message.channel.send('봇을 관리할 수 있는 사람이 아닙니다.')
             let SetupEmbed = new discord.RichEmbed()
-                .setTitle(`리소스 버전 : ${SetupVersion}`)
+                .setTitle(`리소스 버전 : ${version}`)
                 .setColor(ColorArr[RandInt(11)])
-                .addField('패치 내역 3.1.1b')
+                .addField('패치 내역 3.1.1')
                 .addField('업타임 변경', 'Uptime이 밀리세컨드 단위에서 hours(시간)단위로 변경')
                 .addField('Embed 수정', '패치내역 Embed작동 오류로 인해 수정')
-            message.channel.send(SetupEmbed)
+                .addBlankField()
+                .addField('패치 내역 3.2.0')
+                .addField('uptime 수정', 'Uptime을 moment 함수 사용에서 Sec로 단위 변경')
+                .addField('소수', '오류 발생으로 수정')
+                .addField('패치내역', '개발자 패치내역 Dm전송 및 개발자 전용 사용 가능 개발자 및 관리자로도 사용가능')
+                .addField('소수', '소수명령어 조건문 변경')
+                .addField('소수', '소수명령어 조건문 오류로 다시 수정')
+                .addField('패치', '패치내역 또는 패치노트로도 사용가능 일반 패치노트도 자세한 버전으로 표시')
+                .addField('버전 하락', '소수 명령어 문제로 3.2.0에서 3.1.1로 버전 보류')
+                .addField('패치 버전 3.1.2', '연산 걸린시간 명령어 삭제 및 대체')
+            message.author.send(SetupEmbed)
+            message.channel.send(`DM으로 전송되었습니다.`)
         } else {
             let PatchEmbed = new discord.RichEmbed()
                 .setTitle(`현재 리소스 버전 : ${version}`)
@@ -477,8 +489,10 @@ client.on("message", (message)=> {
                 .addField('연산 개편', '이제부터 ^연산 사용에 ÷(나누기)가 나올 경우 소숫점 둘째 자리에서 반올림 하여 값을 나타냅니다!')
                 .addField('이스터에그', '이스터에그가 추가되었습니다. 한번 찾아보세요!')
                 .addField('패치 내역 3.1.1', '패치내역에 Uptime(구동시간)이 표시됨')
+                .addField('패치 내역 3.1.2', '연산 명령어 오류 수정')
+                //.addField('패치 내역 3.2.0', '소수 판단 명령어 생성. ^소수 로 사용 가능')
                 .setColor(ColorArr[RandInt(11)])
-                .setFooter(`패치 이후 uptime : ${uptime}`)
+                .setFooter(`패치 이후 uptime : ${uptime}Sec`)
             message.channel.send(PatchEmbed)
         }
         /*
@@ -491,6 +505,24 @@ client.on("message", (message)=> {
             })
             .catch(console.error);
 */
+
+    } else if (cmd ==`${prefix}소수`) {
+        if (message.author.id != '378535260754935819') return message.channel.send('봇을 관리할 수 있는 사람이 아닙니다.')
+        let prime = 2
+        let IsPrime = true
+        let TempPrime = `약수는 `
+        //if (add % 2 != '1' || add % 2 != '0') return message.channel.send(`숫자가 정수가 아닙니다!`)
+        if (add < 1) return message.channel.send(`인수가 1보다 작습니다!`)
+        while (add == prime) {
+            if (Number.isInteger(add / prime)) {
+                TempPrime = TempPrime + `${prime}, `
+                IsPrime = false
+            }
+        }
+        if (IsPrime == false) message.channel.send(`${add}는 소수가 아닙니다.\n${TempPrime}`)
+        else if (IsPrime == true) message.channel.send(`${add}는 소수입니다.`)
+        else message.channel.send(`알수 없는 오류입니다.`)
+
     } else if (check[0] == prefix) {
         if (check[1] != " ") {
             message.channel.send(`> ${message.author} 아직은 그런거 모르는데..`)
