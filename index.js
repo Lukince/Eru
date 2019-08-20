@@ -1,7 +1,8 @@
 const discord = require('discord.js');
 const client = new discord.Client();
 const prefix = "^";
-const token = process.env.token;
+//const token = process.env.token;
+const token = ''
 const moment = require('moment');
 const collection = new discord.Collection();
 require("moment-duration-format");
