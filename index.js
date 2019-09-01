@@ -603,7 +603,7 @@ client.on("message", (message) => {
                 .catch(lastmsg => console.log('삭제 실패'));
         }
     } else if (select[0] == `${prefix}message`) {
-        if (message.author.id != BotManager) message.channel.send(`봇을 관리할 수 있는 사람이 아닙니다.`)
+        if (message.author.id != BotManager) return message.channel.send(`봇을 관리할 수 있는 사람이 아닙니다.`)
 
         let checking = message.content.split(")")
         if (Firstpoint == 'content') message.channel.send(message.content)
