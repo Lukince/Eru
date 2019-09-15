@@ -103,7 +103,7 @@ client.on("message", (message) => {
 
         json.save();
     } else if (cmd == `${prefix}계산`) {
-        message.channel.send(math.evaluate(add))
+        message.channel.send(math.evaluate(add)).catch(() => message.channel.send("올바른 수식을 입력해 주세요"))
             .catch(() => console.log(`계산 실패 ${math.compile(Firstpoint)}`))
     } else if (cmd == `${prefix}질문`) {
         message.channel.send(AnswerArr[RandInt(6)])
