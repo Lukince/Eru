@@ -649,6 +649,9 @@ client.on("message", (message) => {
         }
         
         else message.channel.send('알 수 없습니다.')
+    } else if (cmd == `${prefix}emoji`) {
+        message.channel.send(client.emojis.get(add).toString())
+            .catch(() => message.channel.send('emoji의 번호가 올바르지 않거나 봇이 해당 서버에 있지 않습니다.'))
     } else if (check[0] == prefix) {
         if (check[1] != " ") {
             message.channel.send(`> ${message.author} 아직은 그런거 모르는데..`)
