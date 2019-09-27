@@ -27,7 +27,7 @@ function print() {
 
 //개인용 변수들
 let Activitys = `^패치내역 | ^도움말`
-const BotManager = '378535260754935819'
+const BotManager = process.env.ManagerID
 let PaperArr = ["가위", "바위", "보"]
 let HelloArr = ["안녕 난 이루야:kissing_heart:", "안녀엉! :laughing:"]
 let AnswerArr = ['확실히 아니예요!', '아니예요', '아닐거예요', '모르겠어요', '그럴껄요..?', '맞아요', '확실해요!!']
@@ -44,8 +44,8 @@ let NowUser = null
 let NowGuild = null
 var answer = 0.00
 //let Activity = collection.get
-const hook = new discord.WebhookClient('608647893724692538', 'va4gc3u3pp84rdEzxcEFCoufOlHIMD30eZcJJ98G8-oJ7wfVfviGUBZfPFTc8fPwawyl')
-const Addhook = new discord.WebhookClient('610055937008599044', 'Jc47IzVQTVaPMqzoK3Ac1FQ7t9riLyaM1LGZA86F9hBBgmQKT-uNWguzXVfdt4xd4Q6A')
+const hook = new discord.WebhookClient(process.env.logId, process.env.logToken)
+const Addhook = new discord.WebhookClient(process.env.AddId, process.env.AddToken)
 //let Activity = `${client.guilds.array().length}개의 서버에서 ${client.guilds.memberCount}명이 사용중!` //총 길드 수와 총 멤버들 구하기
 
 client.on("ready", () => {
