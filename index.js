@@ -497,10 +497,6 @@ client.on("message", (message) => {
             message.channel.send(`${message.author} 봇 관리자 전용 메시지 입니다. 또는 실험중인 명령어 입니다.`)
         }
 
-    } else if (cmd == `${prefix}소스`) {
-        message.author.send('https://github.com/Lukince/Eru/blob/master/index.js')
-        message.author.send('현재 EruBot은 Node.js에 대해 오픈소스를 제공하고 있습니다. 복붙 안할꺼죠..? :kissing_closed_eyes:')
-
     } else if (cmd == `${prefix}패치내역` || cmd == `${prefix}패치노트`) {
         /*
         if (add == '개발자' || add == '관리자') {
