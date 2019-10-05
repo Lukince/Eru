@@ -27,7 +27,7 @@ function print() {
 
 //개인용 변수들
 let Activitys = `^패치내역 | ^도움말`
-const BotManager = process.env.ManagerID
+const BotManager = process.env.ManagerId
 let PaperArr = ["가위", "바위", "보"]
 let HelloArr = ["안녕 난 이루야:kissing_heart:", "안녀엉! :laughing:"]
 let AnswerArr = ['확실히 아니예요!', '아니예요', '아닐거예요', '모르겠어요', '그럴껄요..?', '맞아요', '확실해요!!']
