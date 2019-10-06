@@ -26,7 +26,7 @@ function print() {
 } */ //로그 남기는 용으로 사용하는 Function
 
 //개인용 변수들
-let Activitys = `^패치내역 | ^도움말`
+//let Activitys = `^패치내역 | ^도움말`
 const BotManager = process.env.ManagerId
 let PaperArr = ["가위", "바위", "보"]
 let HelloArr = ["안녕 난 이루야:kissing_heart:", "안녀엉! :laughing:"]
@@ -46,11 +46,11 @@ var answer = 0.00
 //let Activity = collection.get
 const hook = new discord.WebhookClient(process.env.logId, process.env.logToken)
 const Addhook = new discord.WebhookClient(process.env.AddId, process.env.AddToken)
-//let Activity = `${client.guilds.array().length}개의 서버에서 ${client.guilds.memberCount}명이 사용중!` //총 길드 수와 총 멤버들 구하기
+let Activity = `${client.guilds.size}개의 서버에서 ${client.users.size}명이 사용중!` //총 길드 수와 총 멤버들 구하기
 
 client.on("ready", () => {
     console.log(`${client.user.username}is Online!`);
-    client.user.setActivity(Activitys, { type: "PLAYING" });
+    client.user.setActivity(Activitys, { type: "STREAMING" });
 });
 
 client.on("message", (message) => {
