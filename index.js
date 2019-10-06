@@ -26,7 +26,7 @@ function print() {
 } */ //로그 남기는 용으로 사용하는 Function
 
 //개인용 변수들
-//let Activitys = `^패치내역 | ^도움말`
+//let Activity = `^패치내역 | ^도움말`
 const BotManager = process.env.ManagerId
 let PaperArr = ["가위", "바위", "보"]
 let HelloArr = ["안녕 난 이루야:kissing_heart:", "안녀엉! :laughing:"]
@@ -50,7 +50,7 @@ let Activity = `${client.guilds.size}개의 서버에서 ${client.users.size}명
 
 client.on("ready", () => {
     console.log(`${client.user.username}is Online!`);
-    client.user.setActivity(Activitys, { type: "STREAMING" });
+    client.user.setActivity(Activity, { type: "STREAMING" });
 });
 
 client.on("message", (message) => {
