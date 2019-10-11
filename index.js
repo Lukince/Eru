@@ -46,11 +46,11 @@ var answer = 0.00
 //let Activity = collection.get
 const hook = new discord.WebhookClient(process.env.logId, process.env.logToken)
 const Addhook = new discord.WebhookClient(process.env.AddId, process.env.AddToken)
-let Activity = `${client.guilds.size}개의 서버에서 ${client.users.size}명이 사용중!` //총 길드 수와 총 멤버들 구하기
+//let Activity = `${client.guilds.size}개의 서버에서 ${client.users.size}명이 사용중!` //총 길드 수와 총 멤버들 구하기
 
 client.on("ready", () => {
     console.log(`${client.user.username}is Online!`);
-    client.user.setActivity(Activity, { type: "STREAMING" });
+    client.user.setActivity(`${client.guilds.size}개의 서버에서 ${client.users.size}명이 사용중!`, { type: "STREAMING" , url : 'https://twitch.tv/lukince'});
 });
 
 client.on("message", (message) => {
