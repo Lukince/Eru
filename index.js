@@ -103,9 +103,7 @@ client.on("message", (message) => {
 
         json.save();
     } else if (cmd == `${prefix}계산`) {
-        try{
-             message.channel.send(Math.eval(add))
-        }catch() { message.channel.send('올바른 수식을 입력해 주세요. × -> * = -> /') };
+        message.channel.send(math.evaluate(add))
     } else if (cmd == `${prefix}질문`) {
         message.channel.send(AnswerArr[RandInt(6)])
     } else if (cmd == `${prefix}확률`) {
