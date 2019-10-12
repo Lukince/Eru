@@ -31,7 +31,7 @@ const BotManager = process.env.ManagerId
 let PaperArr = ["가위", "바위", "보"]
 let HelloArr = ["안녕 난 이루야:kissing_heart:", "안녀엉! :laughing:"]
 let AnswerArr = ['확실히 아니예요!', '아니예요', '아닐거예요', '모르겠어요', '그럴껄요..?', '맞아요', '확실해요!!']
-let version = 'Version 3.2.1 Patch Data : 2019/08/26'
+let version = 'Version 3.2.2 Patch Data : 2019/10/12'
 //        대버전        .        중버전      .      소버전
 //3개 이상의 명령어 생성 . 1~2개의 명령어 생성 . 간단한 오류 수정
 let CalcArr = ["+", "-", "×", "÷"]
@@ -50,6 +50,7 @@ const Addhook = new discord.WebhookClient(process.env.AddId, process.env.AddToke
 
 client.on("ready", () => {
     console.log(`${client.user.username}is Online!`);
+    client.channels.get('632428472920309760').setName(`Ping : ${client.ping}`)
     client.user.setActivity(`${client.guilds.size}개의 서버에서 ${client.users.size}명이 사용중!`, { type: "STREAMING" , url : 'https://twitch.tv/lukince'});
 });
 
@@ -547,6 +548,7 @@ client.on("message", (message) => {
                 .setThumbnail('https://i.imgur.com/jmj8ud9.png')
                 .addField('패치 내역 3.2.0', '소수 판단 명령어 생성. ^소수 로 사용 가능')
                 .addField('패치 내역 3.2.1', '패치노트 개선 이제 번호로 각 버전별 패치노트를 확인 가능')
+                .addField('패치 내역 3.2.2', '특정 채널 이름 수정용 명령어 추가')
                 .setColor(ColorArr[RandInt(11)])
                 .setFooter(`패치 이후 uptime : ${uptime}Sec`)
             if (add == 1) message.channel.send(PatchEmbed)
