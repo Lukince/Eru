@@ -164,6 +164,8 @@ client.on("message", (message) => {
             .addField('아이디', `${User.id}`, true)
             .addField('서버 가입일', `${membertime.format('YYYY MMM Do, h:mm:ss a')}`, false)
             .addField('계정 생성일', `${usertime.format('YYYY MMM Do, h:mm:ss a')}`, true)
+            .addField('상태', `${User.presence.status}`)
+            .addField('게임', `${User.presence.game}`)
         message.channel.send(UserInfoEmbed)
 
     } else if (cmd == `${prefix}도움말`) {
