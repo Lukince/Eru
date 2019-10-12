@@ -164,6 +164,8 @@ client.on("message", (message) => {
             .addField('아이디', `${User.id}`, true)
             .addField('서버 가입일', `${membertime.format('YYYY MMM Do, h:mm:ss a')}`, false)
             .addField('계정 생성일', `${usertime.format('YYYY MMM Do, h:mm:ss a')}`, true)
+            .addField('상태', `${User.presence.status}}`)
+            .addField('게임중', `${User.presence.game}}`)
         message.channel.send(UserInfoEmbed)
 
     } else if (cmd == `${prefix}도움말`) {
@@ -600,7 +602,7 @@ client.on("message", (message) => {
                 })
                 .catch(lastmsg => console.log('삭제 실패'));
         }
-    } else if (select[0] == `${prefix}message`) {
+    } /* else if (select[0] == `${prefix}message`) {
         if (message.author.id != BotManager) return message.channel.send(`봇을 관리할 수 있는 사람이 아닙니다.`)
 
         let checking = message.content.split(")")
@@ -647,13 +649,15 @@ client.on("message", (message) => {
         }
         
         else message.channel.send('알 수 없습니다.')
-    } else if (cmd == `${prefix}emoji`) {
+    } */ else if (cmd == `${prefix}emoji`) {
         message.delete(0).catch(() => {
             message.channel.send('삭제 권한이 없습니다.')
             message.delete(2000)
             })
         message.channel.send(client.emojis.get(add).toString())
             .catch(() => message.channel.send('emoji의 번호가 올바르지 않거나 봇이 해당 서버에 있지 않습니다.'))
+    } else if (cmd == `${prefix}run`) {
+        message.channel.send(eval(add)).catch(() => message.channel.send('구문 오류'))
     } else if (check[0] == prefix) {
         if (check[1] != " ") {
             message.channel.send(`> ${message.author} 아직은 그런거 모르는데..`)
