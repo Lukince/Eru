@@ -50,7 +50,7 @@ const Addhook = new discord.WebhookClient(process.env.AddId, process.env.AddToke
 
 client.on("ready", () => {
     console.log(`${client.user.username}is Online!`);
-    client.channels.get('632428472920309760').setName(`Ping : ${client.ping}`)
+    client.channels.get('632428472920309760').setName(`Ping : ${Math.round(client.ping)}`)
     client.user.setActivity(`${client.guilds.size}개의 서버에서 ${client.users.size}명이 사용중!`, { type: "STREAMING" , url : 'https://twitch.tv/lukince'});
 });
 
