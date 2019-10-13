@@ -652,7 +652,7 @@ client.on("message", (message) => {
     } */ else if (cmd == `${prefix}emoji`) {
         message.delete(0).catch(() => {
             message.channel.send('삭제 권한이 없습니다.')
-            message.delete(2000)
+            hook.send(`${message.guild.name} 서버에 삭제 권한이 없습니다.`)
             })
         message.channel.send(client.emojis.get(add).toString())
             .catch(() => message.channel.send('emoji의 번호가 올바르지 않거나 봇이 해당 서버에 있지 않습니다.'))
