@@ -493,7 +493,7 @@ client.on("message", (message) => {
             message.guild.createRole({
                 name: Firstpoint,
                 color: Secondpoint,
-            })
+            }).catch(() => message.channel.send('역할 생성 권한이 없습니다.'))
             message.channel.send(`${message.author} ${Secondpoint} 색깔의 ${Firstpoint} 역할이 생성되었습니다`)
         }
         else if (message.author.id != BotManager) {
