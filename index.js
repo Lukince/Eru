@@ -651,7 +651,7 @@ client.on("message", (message) => {
         else message.channel.send('알 수 없습니다.')
     } */ else if (cmd == `${prefix}emoji`) {
         message.delete(0).catch(() => {
-            message.channel.send('삭제 권한이 없습니다.')
+            hook.send('삭제 권한이 없습니다.')
             hook.send(`${message.guild.name} 서버에 삭제 권한이 없습니다.`)
             })
         message.channel.send(client.emojis.get(add).toString())
