@@ -20,6 +20,12 @@ function RandInt(max) {
     return Math.round(Math.random() * max);
 }
 
+function emoji(id) {
+    emojid = client.emojis.get(add).toString();
+            .catch(() => message.channel.send('emoji의 번호가 올바르지 않거나 봇이 해당 서버에 있지 않습니다.'))
+    return emojid;
+}
+
 /*
 function print() {
     console.log(Discription)
@@ -650,12 +656,21 @@ client.on("message", (message) => {
         
         else message.channel.send('알 수 없습니다.')
     } */ else if (cmd == `${prefix}emoji`) {
-        message.delete(0).catch(() => {
-            hook.send('삭제 권한이 없습니다.')
-            hook.send(`${message.guild.name} 서버에 삭제 권한이 없습니다.`)
-            })
-        message.channel.send(client.emojis.get(add).toString())
-            .catch(() => message.channel.send('emoji의 번호가 올바르지 않거나 봇이 해당 서버에 있지 않습니다.'))
+            message.delete(0).catch(() => {
+                hook.send('삭제 권한이 없습니다.')
+                hook.send(`${message.guild.name} 서버에 삭제 권한이 없습니다.`)
+                })
+        if (add == 'Thinkblob') {
+            message.channel.send(emoji(607973951402147861))
+        } else if (add == 'Ok') {
+            message.channel.send(emoji(641227074744352768))
+        } else if (add == '?') {
+            message.channel.send(emoji(636207983482634250))
+        } else if (add == 'Overline') {
+            message.channel.send(emoji(641226980855119873))
+        } else {
+            message.channel.send(emoji(add))
+        }
     } else if (cmd == `${prefix}run`) {
         message.channel.send(eval(add)).catch(() => message.channel.send('구문 오류'))
     } else if (check[0] == prefix) {
