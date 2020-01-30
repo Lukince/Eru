@@ -15,7 +15,6 @@ const broadcast = client.createVoiceBroadcast();
 //const voiceChannel = new discord.VoiceChannel()
 const math = require('mathjs')
 const JSON = require('edit-json-file')
-const ffmepg = require('ffmpeg-extra')
 
 function RandInt(max) {
     return Math.round(Math.random() * max);
