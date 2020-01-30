@@ -4,6 +4,7 @@
   "description": "En:\r This is Erubot source code. You can use commands, but don't copy all code.",
   "main": "index.js",
   "dependencies": {
+    "discord.js": "^11.5.1",
     "nodemon": "^2.0.2"
   },
   "devDependencies": {},
