@@ -69,6 +69,7 @@ client.on("message", (message) => {
     if (message.channel == 'dm') return;
     if (message.author.bot) return;
 
+    client.channels.get('672446895049670665').edit({ name : `Korean : ${message.guild.roles.get('672481696733593641').members}`})
     //const member = message.mentions.users.first();
 
     let check = message.content.split("")
