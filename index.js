@@ -684,16 +684,22 @@ client.on("message", (message) => {
         if (message.channel.id == "672454265809141790") {
             if (cmd == "kr") {
                 message.member.addRole('672481696733593641')
+                message.member.addRole('672454158321844244')
             } else if (cmd == "us") {
                 message.member.addRole('672482005413265418')
+                message.member.addRole('672454158321844244')
             } else if (cmd == "jp") {
                 message.member.addRole('672481720804573240')
+                message.member.addRole('672454158321844244')
             } else if (cmd == "ru") {
                 message.member.addRole('672481895316979732')
+                message.member.addRole('672454158321844244')
             } else if (cmd == "eu") {
                 message.member.addRole('672482273920024592')
+                message.member.addRole('672454158321844244')
             } else if (cmd == "other") {
                 message.member.addRole('672486905757302785')
+                message.member.addRole('672454158321844244')
             } else {
                 message.channel.send('not correct! kr, us, eu, ru, jp, other  choose one!')
             }
