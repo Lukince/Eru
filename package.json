@@ -1,6 +1,6 @@
 {
-  "name": "testbot",
-  "version": "1.3.0",
+  "name": "erubot",
+  "version": "1.4.0",
   "description": "It's Testbot Just Testing",
   "main": "index.js",
   "dependencies": {
@@ -19,5 +19,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Lukince",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lukince/Eru.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Lukince/Eru/issues"
+  },
+  "homepage": "https://github.com/Lukince/Eru#readme"
 }
