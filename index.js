@@ -11,7 +11,7 @@ require("moment-duration-format");
 require("moment-timezone");
 //const ytdl = require('ytdl-core');
 const streamOptions = { seek: 0, volume: 1 };
-const broadcast = client.createVoiceBroadcast();
+//const broadcast = client.createVoiceBroadcast();
 //const voiceChannel = new discord.VoiceChannel()
 const math = require('mathjs')
 const JSON = require('edit-json-file')
