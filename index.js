@@ -21,8 +21,8 @@ function RandInt(max) {
 }
 
 function emoji(add) {
-    emojid = client.emojis.get(add).toString();
-            .catch(() => message.channel.send('emoji의 번호가 올바르지 않거나 봇이 해당 서버에 있지 않습니다.'))
+    emojid = client.emojis.get(add).toString()
+            .catch(() => message.channel.send('emoji의 번호가 올바르지 않거나 봇이 해당 서버에 있지 않습니다.'));
     return emojid;
 }
 
@@ -53,6 +53,10 @@ var answer = 0.00
 const hook = new discord.WebhookClient(process.env.logId, process.env.logToken)
 const Addhook = new discord.WebhookClient(process.env.AddId, process.env.AddToken)
 //let Activity = `${client.guilds.size}개의 서버에서 ${client.users.size}명이 사용중!` //총 길드 수와 총 멤버들 구하기
+
+client.on("guildMemberAdd", (member) => {
+    client.channels.get('672454265809141790').send(`<@${member.id}>, please send message what country do you live. (kr, us, eu, ru, jp, other)`);
+});
 
 client.on("ready", () => {
     console.log(`${client.user.username}is Online!`);
@@ -675,6 +679,25 @@ client.on("message", (message) => {
         message.channel.send(eval(add)).catch(() => message.channel.send('구문 오류'))
     } else if (cmd == `^^7`) {
         message.channel.send("충성충성!")
+    } else if (message.guild.id == "672400232537128971")
+    {
+        if (message.channel.id == "672454265809141790") {
+            if (cmd == "kr") {
+                message.member.addRole('672481696733593641')
+            } else if (cmd == "us") {
+                message.member.addRole('672482005413265418')
+            } else if (cmd == "jp") {
+                message.member.addRole('672481720804573240')
+            } else if (cmd == "ru") {
+                message.member.addRole('672481895316979732')
+            } else if (cmd == "eu") {
+                message.member.addRole('672482273920024592')
+            } else if (cmd == "other") {
+                message.member.addRole('672486905757302785')
+            } else {
+                message.channel.send('not correct! kr, us, eu, ru, jp, other  choose one!')
+            }
+        }
     } else if (check[0] == prefix) {
         if (check[1] != " ") {
             message.channel.send(`> ${message.author} 아직은 그런거 모르는데..`)
