@@ -57,7 +57,7 @@ const Addhook = new discord.WebhookClient(process.env.AddId, process.env.AddToke
 client.on("guildMemberAdd", (member) => {
     client.channels.get('672454265809141790').send(`<@${member.id}>, please send message what country do you live. (kr, us, eu, ru, jp, other)`)
     let NewUserRichEmbed = new discord.RichEmbed()
-        .setTitle(`NEW Cola is coming! HE'S NAME IS <@${member.id}>`)
+        .setTitle(`NEW Cola is coming! HE'S NAME IS ${member.displayName}`)
         .setImage('https://i.imgur.com/X0r1JVj.jpg')
     client.channels.get('672400232537128977').send(NewUserRichEmbed)
 });
@@ -73,7 +73,7 @@ client.on("message", (message) => {
     if (message.channel == 'dm') return;
     if (message.author.bot) return;
 
-    client.channels.get('672446895049670665').edit({ name : `Korean : ${message.guild.members.filter(m => m.roles.get())}`})
+    client.channels.get('672446895049670665').edit({ name : `Korean : ${message.guild.roles.get('672481696733593641')})
     //const member = message.mentions.users.first();
 
     let check = message.content.split("")
