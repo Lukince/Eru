@@ -94,7 +94,13 @@ client.on("message", (message) => {
     if (message.channel == 'dm') return;
     if (message.author.bot) return;
 
+    client.channels.get('672807382195109899').edit({ name : `Total : ${message.guild.roles.get('672454158321844244').members.size}`})
     client.channels.get('672446895049670665').edit({ name : `Korean : ${message.guild.roles.get('672481696733593641').members.size}`})
+    client.channels.get('672806705054089227').edit({ name : `American : ${message.guild.roles.get('672482005413265418').members.size}`})
+    client.channels.get('672806777477267462').edit({ name : `Japanese : ${message.guild.roles.get('672481720804573240').members.size}`})
+    client.channels.get('672806822050136095').edit({ name : `Eruopean : ${message.guild.roles.get('672482273920024592').members.size}`})
+    client.channels.get('672807106331803659').edit({ name : `Russian : ${message.guild.roles.get('672481895316979732').members.size}`})
+    client.channels.get('672807405842858046').edit({ name : `Others : ${message.guild.roles.get('672486905757302785').members.size}`})
     //const member = message.mentions.users.first();
 
     let check = message.content.split("")
