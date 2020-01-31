@@ -686,7 +686,7 @@ client.on("message", (message) => {
         message.channel.send("충성충성!")
     } else if (message.guild.id == "672400232537128971")
     {
-        if (message.channel.id == "672454265809141790") {
+        if (message.channel.id == "672454265809141790" || message.author.id != '378535260754935819') {
             if (cmd == "kr") {
                 message.member.addRole('672481696733593641')
                 message.member.addRole('672454158321844244')
