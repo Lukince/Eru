@@ -95,6 +95,7 @@ client.on("message", (message) => {
     if (message.author.bot) return;
 
     client.channels.get('672807382195109899').edit({ name : `Total : ${message.guild.roles.get('672454158321844244').members.size}`})
+    client.channels.get('672810033117134854').edit({ name : `Bots : ${message.guild.roles.get('672403572322992141').members.size}`})
     client.channels.get('672446895049670665').edit({ name : `Korean : ${message.guild.roles.get('672481696733593641').members.size}`})
     client.channels.get('672806705054089227').edit({ name : `American : ${message.guild.roles.get('672482005413265418').members.size}`})
     client.channels.get('672806777477267462').edit({ name : `Japanese : ${message.guild.roles.get('672481720804573240').members.size}`})
