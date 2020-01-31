@@ -744,13 +744,13 @@ client.on("message", (message) => {
                 hook.send(`${message.guild.name} 서버에 삭제 권한이 없습니다.`)
                 })
         if (add == 'Thinkblob') {
-            message.channel.send(emoji(607973951402147861))
+            message.channel.send(emoji('607973951402147861'))
         } else if (add == 'Ok') {
-            message.channel.send(emoji(641227074744352768))
+            message.channel.send(emoji('641227074744352768'))
         } else if (add == '?') {
-            message.channel.send(emoji(636207983482634250))
+            message.channel.send(emoji('636207983482634250'))
         } else if (add == 'Overline') {
-            message.channel.send(emoji(641226980855119873))
+            message.channel.send(emoji('641226980855119873'))
         } else {
             message.channel.send(emoji(add))
         }
