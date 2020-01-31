@@ -16,6 +16,8 @@ const streamOptions = { seek: 0, volume: 1 };
 const math = require('mathjs')
 const JSON = require('edit-json-file')
 
+//function 목록
+
 function RandInt(max) {
     return Math.round(Math.random() * max);
 }
@@ -24,6 +26,24 @@ function emoji(add) {
     emojid = client.emojis.get(add).toString()
             .catch(() => message.channel.send('emoji의 번호가 올바르지 않거나 봇이 해당 서버에 있지 않습니다.'));
     return emojid;
+}
+
+function CheckRoles(member) {
+    if (member.roles.find(r => r.name === "Korean")) {
+        member.removeRole('672481696733593641')
+    } else if (member.roles.find(r => r.name === "Russian")) {
+        member.removeRole('672481895316979732')
+    } else if (member.roles.find(r => r.name === "Japanese")) {
+        member.removeRole('672481720804573240')
+    } else if (member.roles.find(r => r.name === "European")) {
+        member.removeRole('672482273920024592')
+    } else if (member.roles.find(r => r.name === "American")) {
+        member.removeRole('672482005413265418')
+    } else if (member.roles.find(r => r.name === "Others")) {
+        member.removeRole('672486905757302785')
+    } else {
+        client.channels.get('672639589055332372').send(`${member.displayName} 은 언어 역할이 없습니다.`)
+    }
 }
 
 /*
@@ -104,33 +124,55 @@ client.on("message", (message) => {
         if (message.channel != "dm") {
             if (check[1] == " ") hook.send(`${message.guild.name} 서버에서 ${message.channel.name} 채널에서 ${message.author.username} - ${message.author.id} 님이 ${message.content} 을(를) 사용하셨습니다.`)
         }
-        if (message.guild.id == "672400232537128971") {
-            if (message.channel.id == "672454265809141790" && message.author.id != '378535260754935819') {
-                if (cmd == "kr") {
-                    message.member.addRole('672481696733593641')
-                    message.member.addRole('672454158321844244')
-                } else if (cmd == "us") {
-                    message.member.addRole('672482005413265418')
-                    message.member.addRole('672454158321844244')
-                } else if (cmd == "jp") {
-                    message.member.addRole('672481720804573240')
-                    message.member.addRole('672454158321844244')
-                } else if (cmd == "ru") {
-                    message.member.addRole('672481895316979732')
-                    message.member.addRole('672454158321844244')
-                } else if (cmd == "eu") {
-                    message.member.addRole('672482273920024592')
-                    message.member.addRole('672454158321844244')
-                } else if (cmd == "other") {
-                    message.member.addRole('672486905757302785')
-                    message.member.addRole('672454158321844244')
-                } else {
-                    message.channel.send('not correct! kr, us, eu, ru, jp, other  choose one!')
-                }
-            } else if () {
-
+    } 
+    if (message.channel.id == "672454265809141790" && message.author.id != '378535260754935819') {
+        if (cmd == "kr") {
+            message.member.addRole('672481696733593641')
+            message.member.addRole('672454158321844244')
+        } else if (cmd == "us") {
+            message.member.addRole('672482005413265418')
+            message.member.addRole('672454158321844244')
+        } else if (cmd == "jp") {
+            message.member.addRole('672481720804573240')
+            message.member.addRole('672454158321844244')
+        } else if (cmd == "ru") {
+            message.member.addRole('672481895316979732')
+            message.member.addRole('672454158321844244')
+        } else if (cmd == "eu") {
+            message.member.addRole('672482273920024592')
+            message.member.addRole('672454158321844244')
+        } else if (cmd == "other") {
+            message.member.addRole('672486905757302785')
+            message.member.addRole('672454158321844244')
+        } else {
+            message.channel.send('not correct! kr, us, eu, ru, jp, other  choose one!')
+        }
+    } else if (message.channel.id == '672449492020363284') {
+        if (cmd == `${prefix}language`)
+        {
+            if (add == 'kr') {
+                CheckRoles(message.member)
+                message.member.addRole('672481696733593641')
+            } else if (add == 'us') {
+                CheckRoles(message.member)
+                message.member.addRole('672482005413265418')
+            } else if (add == 'jp') {
+                CheckRoles(message.member)
+                message.member.addRole('672481720804573240')
+            } else if (add == 'ru') {
+                CheckRoles(message.member)
+                message.member.addRole('672481895316979732')
+            } else if (add == 'eu') {
+                CheckRoles(message.member)
+                message.member.addRole('672482273920024592')
+            } else if (add == 'other') {
+                CheckRoles(message.member)
+                message.member.addRole('672486905757302785')
+            } else {
+                message.channel.send("Use Example : ^language kr  <- write your country behind. (kr, eu, us, jp, ru, other)")
             }
-        } else if (cmd == `${prefix}안녕`) {
+        }
+    } else if (cmd == `${prefix}안녕`) {
         //console.log(message.mentions.user.id)
         return message.channel.send(HelloArr[RandInt(1)]);
 
