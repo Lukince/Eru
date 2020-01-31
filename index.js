@@ -104,8 +104,33 @@ client.on("message", (message) => {
         if (message.channel != "dm") {
             if (check[1] == " ") hook.send(`${message.guild.name} 서버에서 ${message.channel.name} 채널에서 ${message.author.username} - ${message.author.id} 님이 ${message.content} 을(를) 사용하셨습니다.`)
         }
-    }
-    if (cmd == `${prefix}안녕`) {
+        if (message.guild.id == "672400232537128971") {
+            if (message.channel.id == "672454265809141790" && message.author.id != '378535260754935819') {
+                if (cmd == "kr") {
+                    message.member.addRole('672481696733593641')
+                    message.member.addRole('672454158321844244')
+                } else if (cmd == "us") {
+                    message.member.addRole('672482005413265418')
+                    message.member.addRole('672454158321844244')
+                } else if (cmd == "jp") {
+                    message.member.addRole('672481720804573240')
+                    message.member.addRole('672454158321844244')
+                } else if (cmd == "ru") {
+                    message.member.addRole('672481895316979732')
+                    message.member.addRole('672454158321844244')
+                } else if (cmd == "eu") {
+                    message.member.addRole('672482273920024592')
+                    message.member.addRole('672454158321844244')
+                } else if (cmd == "other") {
+                    message.member.addRole('672486905757302785')
+                    message.member.addRole('672454158321844244')
+                } else {
+                    message.channel.send('not correct! kr, us, eu, ru, jp, other  choose one!')
+                }
+            } else if () {
+
+            }
+        } else if (cmd == `${prefix}안녕`) {
         //console.log(message.mentions.user.id)
         return message.channel.send(HelloArr[RandInt(1)]);
 
@@ -684,31 +709,6 @@ client.on("message", (message) => {
         message.channel.send(eval(add)).catch(() => message.channel.send('구문 오류'))
     } else if (cmd == `^^7`) {
         message.channel.send("충성충성!")
-    } else if (message.guild.id == "672400232537128971")
-    {
-        if (message.channel.id == "672454265809141790" && message.author.id != '378535260754935819') {
-            if (cmd == "kr") {
-                message.member.addRole('672481696733593641')
-                message.member.addRole('672454158321844244')
-            } else if (cmd == "us") {
-                message.member.addRole('672482005413265418')
-                message.member.addRole('672454158321844244')
-            } else if (cmd == "jp") {
-                message.member.addRole('672481720804573240')
-                message.member.addRole('672454158321844244')
-            } else if (cmd == "ru") {
-                message.member.addRole('672481895316979732')
-                message.member.addRole('672454158321844244')
-            } else if (cmd == "eu") {
-                message.member.addRole('672482273920024592')
-                message.member.addRole('672454158321844244')
-            } else if (cmd == "other") {
-                message.member.addRole('672486905757302785')
-                message.member.addRole('672454158321844244')
-            } else {
-                message.channel.send('not correct! kr, us, eu, ru, jp, other  choose one!')
-            }
-        }
     } else if (check[0] == prefix) {
         if (check[1] != " ") {
             message.channel.send(`> ${message.author} 아직은 그런거 모르는데..`)
