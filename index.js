@@ -153,21 +153,27 @@ client.on("message", (message) => {
             if (add == 'kr') {
                 CheckRoles(message.member)
                 message.member.addRole('672481696733593641')
+                message.channel.send('이제 당신은 한국인 입니다. :)')
             } else if (add == 'us') {
                 CheckRoles(message.member)
                 message.member.addRole('672482005413265418')
+                message.channel.send("Now you're English :)")
             } else if (add == 'jp') {
                 CheckRoles(message.member)
                 message.member.addRole('672481720804573240')
+                message.channel.send('今、あなたは日本人です:)')
             } else if (add == 'ru') {
                 CheckRoles(message.member)
                 message.member.addRole('672481895316979732')
+                message.channel.send('Теперь ты русский :)')
             } else if (add == 'eu') {
                 CheckRoles(message.member)
                 message.member.addRole('672482273920024592')
+                message.channel.send("Now you're European :)")
             } else if (add == 'other') {
                 CheckRoles(message.member)
                 message.member.addRole('672486905757302785')
+                message.channel.send("I don't know your country, but one sure thing is we're friends :kissing_heart:")
             } else {
                 message.channel.send("Use Example : ^language kr  <- write your country behind. (kr, eu, us, jp, ru, other)")
             }
