@@ -23,7 +23,7 @@ function RandInt(max) {
 }
 
 function emoji(add) {
-    emojid = client.emojis.get(add).toString()
+    emojid = client.emojis.get(add)
         .catch(() => message.channel.send('emoji의 번호가 올바르지 않거나 봇이 해당 서버에 있지 않습니다.'));
     return emojid;
 }
