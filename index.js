@@ -56,7 +56,7 @@ const Addhook = new discord.WebhookClient(process.env.AddId, process.env.AddToke
 
 client.on("guildMemberAdd", (member) => {
     client.channels.get('672454265809141790').send(`<@${member.id}>, please send message what country do you live. (kr, us, eu, ru, jp, other)`)
-    let NewUserRichEmbed = discord.RichEmbed()
+    let NewUserRichEmbed = new discord.RichEmbed()
         .setTitle(`NEW Cola is coming! HE'S NAME IS <@${member.id}>`)
         .setImage('https://i.imgur.com/X0r1JVj.jpg')
     client.channels.get('672400232537128977').send(NewUserRichEmbed)
