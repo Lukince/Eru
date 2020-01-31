@@ -177,6 +177,7 @@ client.on("message", (message) => {
             } else {
                 message.channel.send("Use Example : ^language kr  <- write your country behind. (kr, eu, us, jp, ru, other)")
             }
+        } else if (false) {
         }
     } else if (cmd == `${prefix}안녕`) {
         //console.log(message.mentions.user.id)
