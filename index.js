@@ -84,6 +84,7 @@ client.on("guildMemberAdd", (member) => {
 
 client.on("ready", () => {
     console.log(`${client.user.username}is Online!`);
+    client.channels.get('').send('now on!')
     client.channels.get('632428472920309760').setName(`Ping : ${Math.round(client.ping)}ms`)
     client.user.setActivity(`${client.guilds.size}개의 서버에서 ${client.users.size}명이 사용중!`, { type: "STREAMING" , url : 'https://twitch.tv/lukince'});
 });
@@ -93,7 +94,7 @@ client.on("message", (message) => {
     if (message.channel == 'dm') return;
     if (message.author.bot) return;
 
-    client.channels.get('672446895049670665').edit({ name : `Korean : ${message.guild.roles.get('672481696733593641')}`})
+    client.channels.get('672446895049670665').edit({ name : `Korean : ${message.guild.roles.get('672481696733593641').members.size}`})
     //const member = message.mentions.users.first();
 
     let check = message.content.split("")
