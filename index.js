@@ -758,11 +758,7 @@ client.on("message", (message) => {
         message.channel.send(eval(add)).catch(() => message.channel.send('구문 오류'))
     } else if (cmd == `^^7`) {
         message.channel.send("충성충성!")
-    } /* else if (check[0] == prefix) {
-        if (check[1] != " ") {
-            message.channel.send(`> ${message.author} 아직은 그런거 모르는데..`)
-        }
-    } */
+    }
 
 
 
