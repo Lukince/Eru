@@ -73,7 +73,7 @@ var answer = 0.00
 const hook = new discord.WebhookClient(process.env.logId, process.env.logToken)
 const Addhook = new discord.WebhookClient(process.env.AddId, process.env.AddToken)
 //let Activity = `${client.guilds.size}개의 서버에서 ${client.users.size}명이 사용중!` //총 길드 수와 총 멤버들 구하기
-
+/*
 client.on("guildMemberAdd", (member) => {
     client.channels.get('672454265809141790').send(`<@${member.id}>, please send message what country do you live. (kr, us, eu, ru, jp, other)`)
     let NewUserRichEmbed = new discord.RichEmbed()
@@ -81,7 +81,8 @@ client.on("guildMemberAdd", (member) => {
         .setImage('https://i.imgur.com/X0r1JVj.jpg')
     client.channels.get('672400232537128977').send(NewUserRichEmbed)
 });
-
+*/
+//Active later :)
 client.on("ready", () => {
     console.log(`${client.user.username}is Online!`);
     client.channels.get('672639589055332372').send('now on!')
