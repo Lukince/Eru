@@ -134,7 +134,7 @@ client.on("message", (message) => {
             if (check[1] == " ") hook.send(`${message.guild.name} 서버에서 ${message.channel.name} 채널에서 ${message.author.username} - ${message.author.id} 님이 ${message.content} 을(를) 사용하셨습니다.`)
         }
     } 
-    if (message.channel.id == "672454265809141790" && message.author.id != '378535260754935819') {
+    if (message.channel.id == "672454265809141790" && !message.member.roles.find(r => r.id === '672454158321844244')) {
         if (cmd == "kr") {
             message.member.addRole('672481696733593641')
             message.member.addRole('672454158321844244')
@@ -156,7 +156,7 @@ client.on("message", (message) => {
         } else {
             message.channel.send('not correct! kr, us, eu, ru, jp, other  choose one!')
         }
-    } else if (message.channel.id == '672449492020363284') {
+    } else if (message.channel.id == '672449492020363284' || message.channel.id == '672479604648312844') {
         if (cmd == `${prefix}language`)
         {
             if (add == 'kr') {
@@ -186,7 +186,9 @@ client.on("message", (message) => {
             } else {
                 message.channel.send("Use Example : ^language kr  <- write your country behind. (kr, eu, us, jp, ru, other)")
             }
-        } else if (false) {
+        } else if (cmd == `!report`) {
+            client.channels.get('672426633541582888').send(`${message.author.displayName}님의 신고 : ${message.content}`)
+            message.delete()
         }
     } else if (cmd == `${prefix}안녕`) {
         //console.log(message.mentions.user.id)
