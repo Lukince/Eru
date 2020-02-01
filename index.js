@@ -187,7 +187,7 @@ client.on("message", (message) => {
                 message.channel.send("Use Example : ^language kr  <- write your country behind. (kr, eu, us, jp, ru, other)")
             }
         } else if (cmd == `!report`) {
-            client.channels.get('672426633541582888').send(`${message.author.displayName}님의 신고 : ${message.content}`)
+            client.channels.get('672426633541582888').send(`${message.author.tag}님의 신고 : ${message.content}`)
             message.delete()
         }
     } else if (cmd == `${prefix}안녕`) {
