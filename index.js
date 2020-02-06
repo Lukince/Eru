@@ -769,7 +769,7 @@ client.on("message", (message) => {
     } else if (cmd == `${prefix}run`) {
         message.channel.send(eval(add)).catch(() => message.channel.send('구문 오류'))
     } else if (cmd == `${prefix}serverlist`) {
-        message.channel.send(client.guilds.forEach(m => m.name))
+        message.channel.send(client.guilds.forEach((guild) => guild.name))
     } else if (cmd == `^^7`) {
         message.channel.send("충성충성!")
     }
