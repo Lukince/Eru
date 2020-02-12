@@ -72,11 +72,10 @@ var answer = 0.00
 //let Activity = collection.get
 const hook = new discord.WebhookClient(process.env.logId, process.env.logToken)
 const Addhook = new discord.WebhookClient(process.env.AddId, process.env.AddToken)
-const enterchannel = client.channels.get('672400232537128977')
 //let Activity = `${client.guilds.size}개의 서버에서 ${client.users.size}명이 사용중!` //총 길드 수와 총 멤버들 구하기
 
 client.on("guildMemberRemove", (member) => {
-    enterchannel.send(`${member.displayName}is gone... GoodBye :cry:`)
+    client.channels.get('672400232537128977').send(`${member.displayName} is gone... GoodBye :cry:`)
 });
 
 client.on("guildMemberAdd", (member) => {
@@ -84,7 +83,7 @@ client.on("guildMemberAdd", (member) => {
     let NewUserRichEmbed = new discord.RichEmbed()
         .setTitle(`NEW Cola is coming! HE'S NAME IS ${member.displayName}`)
         .setImage('https://i.imgur.com/X0r1JVj.jpg')
-        enterchannel.send(NewUserRichEmbed)
+    client.channels.get('672400232537128977').send(NewUserRichEmbed)
 });
 
 //Active later :)
