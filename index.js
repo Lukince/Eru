@@ -57,7 +57,7 @@ const BotManager = process.env.ManagerId
 let PaperArr = ["가위", "바위", "보"]
 let HelloArr = ["안녕 난 이루야:kissing_heart:", "안녀엉! :laughing:"]
 let AnswerArr = ['확실히 아니예요!', '아니예요', '아닐거예요', '모르겠어요', '그럴껄요..?', '맞아요', '확실해요!!']
-let version = 'Version 3.2.2 Patch Data : 2019/10/12'
+let version = 'Version 3.2.2 Patch Data : 2020/02/12'
 //        대버전        .        중버전      .      소버전
 //3개 이상의 명령어 생성 . 1~2개의 명령어 생성 . 간단한 오류 수정
 let CalcArr = ["+", "-", "×", "÷"]
@@ -72,14 +72,19 @@ var answer = 0.00
 //let Activity = collection.get
 const hook = new discord.WebhookClient(process.env.logId, process.env.logToken)
 const Addhook = new discord.WebhookClient(process.env.AddId, process.env.AddToken)
+const enterchannel = client.channels.get('672400232537128977')
 //let Activity = `${client.guilds.size}개의 서버에서 ${client.users.size}명이 사용중!` //총 길드 수와 총 멤버들 구하기
+
+client.on("guildMemberRemove", (member) => {
+    enterchannel.send(`${member.displayName}is gone... GoodBye :cry:`)
+});
 
 client.on("guildMemberAdd", (member) => {
     //client.channels.get('672454265809141790').send(`<@${member.id}>, please send message what country do you live. (kr, us, eu, ru, jp, other)`)
     let NewUserRichEmbed = new discord.RichEmbed()
         .setTitle(`NEW Cola is coming! HE'S NAME IS ${member.displayName}`)
         .setImage('https://i.imgur.com/X0r1JVj.jpg')
-    client.channels.get('672400232537128977').send(NewUserRichEmbed)
+        enterchannel.send(NewUserRichEmbed)
 });
 
 //Active later :)
