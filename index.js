@@ -22,9 +22,9 @@ function RandInt(max) {
     return Math.round(Math.random() * max);
 }
 
-function emoji(add) {
+function emoji(emojiid) {
     try {
-        emojid = client.emojis.get(add)
+        emojid = client.emojis.get(emojiid)
         return emojid;
     } catch (exception) {
         message.channel.send(`Wrong emoji. \`\`\`Exception : ${exception}\`\`\``)
