@@ -91,7 +91,7 @@ client.on("ready", () => {
 });
 
 client.on("message", (message) => {
-
+    try {
     client.channels.get('672807382195109899').edit({ name : `Total : ${client.guilds.get('672400232537128971').roles.get('672454158321844244').members.size}`})
     client.channels.get('672810033117134854').edit({ name : `Bots : ${client.guilds.get('672400232537128971').roles.get('672403572322992141').members.size}`})
     client.channels.get('672446895049670665').edit({ name : `Korean : ${client.guilds.get('672400232537128971').roles.get('672481696733593641').members.size}`})
@@ -795,7 +795,10 @@ client.on("message", (message) => {
 
     msg = ''
     ErrorCode = 0
-
+    }
+    catch (exception) {
+        message.channel.send(`Something wrong with my system.. :(\n\`\`\`Exception : ${exception}\`\`\``)
+    }
 });
 
 client.login(token).catch(err => console.log(err));
