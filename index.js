@@ -781,7 +781,8 @@ client.on("message", (message) => {
             message.channel.send(emoji(add))
         }
     } else if (cmd == `${prefix}run`) {
-        message.channel.send(eval(add)).catch(() => message.channel.send('구문 오류'))
+        if (message.author.id != BotManager) return message.channel.send(`봇을 관리할 수 있는 사람이 아닙니다.`)
+        message.channel.send(eval(add))
     } else if (cmd == `${prefix}serverlist`) {
         if (message.author.id != BotManager) return message.channel.send(`봇을 관리할 수 있는 사람이 아닙니다.`)
         client.guilds.forEach((guild) => {
