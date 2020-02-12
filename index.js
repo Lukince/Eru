@@ -23,9 +23,13 @@ function RandInt(max) {
 }
 
 function emoji(add) {
-    emojid = client.emojis.get(add)
-        .catch(() => message.channel.send('emoji의 번호가 올바르지 않거나 봇이 해당 서버에 있지 않습니다.'));
-    return emojid;
+    try {
+        emojid = client.emojis.get(add)
+        return emojid;
+    } catch (exception) {
+        message.channel.send(`Wrong emoji. \`\`\`Exception : ${exception}\`\`\``)
+    }
+        //.catch(() => message.channel.send('emoji의 번호가 올바르지 않거나 봇이 해당 서버에 있지 않습니다.'))
 }
 
 function CheckRoles(member) {
@@ -782,7 +786,7 @@ client.on("message", (message) => {
         }
     } else if (cmd == `${prefix}run`) {
         if (message.author.id != BotManager) return message.channel.send(`봇을 관리할 수 있는 사람이 아닙니다.`)
-        message.channel.send(eval(add))
+        message.channel.send(eval(add)).catch()
     } else if (cmd == `${prefix}serverlist`) {
         if (message.author.id != BotManager) return message.channel.send(`봇을 관리할 수 있는 사람이 아닙니다.`)
         client.guilds.forEach((guild) => {
