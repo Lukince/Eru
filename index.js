@@ -134,7 +134,8 @@ client.on("message", (message) => {
         if (message.channel != "dm") {
             if (check[1] == " ") hook.send(`${message.guild.name} 서버에서 ${message.channel.name} 채널에서 ${message.author.username} - ${message.author.id} 님이 ${message.content} 을(를) 사용하셨습니다.`)
         }
-    } 
+    }
+    /*
     if (message.channel.id == "672454265809141790" && !message.member.roles.find(r => r.id === '672454158321844244')) {
         if (cmd == "kr") {
             message.member.addRole('672481696733593641')
@@ -157,7 +158,7 @@ client.on("message", (message) => {
         } else {
             message.channel.send('not correct! kr, us, eu, ru, jp, other  choose one!')
         }
-    } else if (message.channel.id == '672449492020363284' || message.channel.id == '672479604648312844') {
+    } else */ if (message.channel.id == '672449492020363284' || message.channel.id == '672479604648312844') {
         if (cmd == `${prefix}language`)
         {
             if (add == 'kr') {
@@ -190,6 +191,19 @@ client.on("message", (message) => {
         } else if (cmd == `!report`) {
             client.channels.get('672426633541582888').send(`${message.author.tag}님의 신고 : ${message.content}`)
             message.delete()
+        } else if (cmd == '!levelalarm') {
+            if (add == 'on') {
+                if (!message.member.roles.find(m => m.id === '672410896588341278'))
+                {
+                    message.member.addRole('672410896588341278')
+                }
+            } else if (add == 'off') {
+                if (message.member.roles.find(m => m.id === '672410896588341278'))
+                {
+                    message.member.removeRole('672410896588341278')
+                }
+            }
+            message.channel.send('Successfully Changed!')
         }
     } else if (cmd == `${prefix}안녕`) {
         //console.log(message.mentions.user.id)
