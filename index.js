@@ -23,13 +23,9 @@ function RandInt(max) {
 }
 
 function emoji(emojiid) {
-    try {
-        emojid = client.emojis.get(emojiid)
-        return emojid;
-    } catch (exception) {
-        message.channel.send(`Wrong emoji. \`\`\`Exception : ${exception}\`\`\``)
-    }
-        //.catch(() => message.channel.send('emoji의 번호가 올바르지 않거나 봇이 해당 서버에 있지 않습니다.'))
+    emojid = client.emojis.get(emojiid)
+        .catch(() => message.channel.send('emoji의 번호가 올바르지 않거나 봇이 해당 서버에 있지 않습니다.'));
+    return emojid;
 }
 
 function CheckRoles(member) {
