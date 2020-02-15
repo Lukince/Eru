@@ -75,15 +75,18 @@ const Addhook = new discord.WebhookClient(process.env.AddId, process.env.AddToke
 //let Activity = `${client.guilds.size}개의 서버에서 ${client.users.size}명이 사용중!` //총 길드 수와 총 멤버들 구하기
 
 client.on("guildMemberRemove", (member) => {
-    client.channels.get('672400232537128977').send(`${member.displayName} is gone... GoodBye :cry:`)
+    if (member.guild.id == '672400232537128971') {
+        client.channels.get('672400232537128977').send(`${member.displayName} is gone... GoodBye :cry:`)
+    }
 });
 
 client.on("guildMemberAdd", (member) => {
     //client.channels.get('672454265809141790').send(`<@${member.id}>, please send message what country do you live. (kr, us, eu, ru, jp, other)`)
-    if (member.guild.id != '672400232537128971') return;
-    let NewUserRichEmbed = new discord.RichEmbed()
-        .setTitle(`New colony administor, <@{member.id}>. Welecome ;)`)
-    client.channels.get('672400232537128977').send(NewUserRichEmbed)
+    if (member.guild.id == '672400232537128971') {
+        let NewUserRichEmbed = new discord.RichEmbed()
+            .setTitle(`New colony administor, <@${member.id}>. Welecome ;)`)
+        client.channels.get('672400232537128977').send(NewUserRichEmbed)
+    }
 });
 
 //Active later :)
