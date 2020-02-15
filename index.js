@@ -84,7 +84,7 @@ client.on("guildMemberAdd", (member) => {
     //client.channels.get('672454265809141790').send(`<@${member.id}>, please send message what country do you live. (kr, us, eu, ru, jp, other)`)
     if (member.guild.id == '672400232537128971') {
         let NewUserRichEmbed = new discord.RichEmbed()
-            .setTitle(`New colony administor, <@${member.user.id}> . Welecome ;)`)
+            .setTitle(`New colony administor, @${member.user.tag}. Welecome ;)`)
         client.channels.get('672400232537128977').send(NewUserRichEmbed)
     }
 });
