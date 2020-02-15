@@ -83,6 +83,7 @@ client.on("guildMemberRemove", (member) => {
 client.on("guildMemberAdd", (member) => {
     //client.channels.get('672454265809141790').send(`<@${member.id}>, please send message what country do you live. (kr, us, eu, ru, jp, other)`)
     if (member.guild.id == '672400232537128971') {
+        member.addRole('672454158321844244')
         client.channels.get('672400232537128977').send(`New colony administor, <@${member.id}>. Welecome ;)`)
     }
 });
