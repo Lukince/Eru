@@ -65,6 +65,42 @@ client.on("ready", () => {
 
 client.on("message", (message) => {
     try {
+
+    if (message.channel == 'dm') return;
+    if (message.author.bot) return;
+
+    //const member = message.mentions.users.first();
+
+    let check = message.content.split("")
+    let msg = message.content.split(" ")
+    let select = message.content.split(".")
+    let cmd = msg[0];
+    let add = msg[1];
+    let description = message.content.split("(")
+    let i = 0;
+    let uptime = client.uptime / 1000
+    let Firstpoint = select[1]
+    let Secondpoint = select[2]
+
+    const filter = m => m.content.split(" ") == `${prefix}연산`
+    if (WaitAnswer == 1) {
+        message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
+            .then(collected => NowCannel.send(`${NowUser}님이 문제를 푸는 중입니다.`))
+            .catch(collected => {
+                if (WaitAnswer == 1) {
+                    NowChannel.send(`문제를 입력한지 30초가 지났습니다. 공용 사용을 위해 문제를 종료합니다.`)
+                    return WaitAnswer = 0
+                }
+                WaitAnswer = 0
+            });
+    }
+
+    if (check[0] == "^") {
+        if (message.channel != "dm") {
+            if (check[1] == " ") hook.send(`${message.guild.name} 서버에서 ${message.channel.name} 채널에서 ${message.author.username} - ${message.author.id} 님이 ${message.content} 을(를) 사용하셨습니다.`)
+        }
+    }
+
     if (cmd == `${prefix}안녕`) {
         //console.log(message.mentions.user.id)
         return message.channel.send(HelloArr[RandInt(1)]);
