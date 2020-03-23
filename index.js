@@ -28,24 +28,6 @@ function emoji(emojiid) {
     return emojid;
 }
 
-function CheckRoles(member) {
-    if (member.roles.find(r => r.name === "Korean")) {
-        member.removeRole('672481696733593641')
-    } else if (member.roles.find(r => r.name === "Russian")) {
-        member.removeRole('672481895316979732')
-    } else if (member.roles.find(r => r.name === "Japanese")) {
-        member.removeRole('672481720804573240')
-    } else if (member.roles.find(r => r.name === "European")) {
-        member.removeRole('672482273920024592')
-    } else if (member.roles.find(r => r.name === "American")) {
-        member.removeRole('672482005413265418')
-    } else if (member.roles.find(r => r.name === "Others")) {
-        member.removeRole('672486905757302785')
-    } else {
-        client.channels.get('672639589055332372').send(`${member.displayName} 은 언어 역할이 없습니다.`)
-    }
-}
-
 /*
 function print() {
     console.log(Discription)
@@ -74,24 +56,9 @@ const hook = new discord.WebhookClient(process.env.logId, process.env.logToken)
 const Addhook = new discord.WebhookClient(process.env.AddId, process.env.AddToken)
 //let Activity = `${client.guilds.size}개의 서버에서 ${client.users.size}명이 사용중!` //총 길드 수와 총 멤버들 구하기
 
-client.on("guildMemberRemove", (member) => {
-    if (member.guild.id == '672400232537128971') {
-        client.channels.get('672400232537128977').send(`${member.displayName} is gone... GoodBye :cry:`)
-    }
-});
-
-client.on("guildMemberAdd", (member) => {
-    //client.channels.get('672454265809141790').send(`<@${member.id}>, please send message what country do you live. (kr, us, eu, ru, jp, other)`)
-    if (member.guild.id == '672400232537128971') {
-        member.addRole('672454158321844244')
-        client.channels.get('672400232537128977').send(`New colony administor, <@${member.id}>. Welecome ;)`)
-    }
-});
-
 //Active later :)
 client.on("ready", () => {
     console.log(`${client.user.username}is Online!`);
-    client.channels.get('672639589055332372').send('now on!')
     client.channels.get('632428472920309760').setName(`Ping : ${Math.round(client.ping)}ms`)
     client.user.setActivity(`${client.guilds.size}개의 서버에서 ${client.users.size}명이 사용중!`, { type: "STREAMING" , url : 'https://twitch.tv/lukince'});
 });
