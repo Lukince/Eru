@@ -690,12 +690,13 @@ client.on("message", (message) => {
 
 
 
-    msg = ''
-    ErrorCode = 0
+    
     }
     catch (exception) {
         message.channel.send(`Something wrong with my system.. :(\n\`\`\`Exception : ${exception}\`\`\``)
     }
+    msg = ''
+    ErrorCode = 0
 });
 
 client.login(token).catch(err => console.log(err));
