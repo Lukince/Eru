@@ -64,8 +64,6 @@ client.on("ready", () => {
 });
 
 client.on("message", (message) => {
-    try {
-
     if (message.channel == 'dm') return;
     if (message.author.bot) return;
 
@@ -691,10 +689,6 @@ client.on("message", (message) => {
 
 
     
-    }
-    catch (exception) {
-        message.channel.send(`Something wrong with my system.. :(\n\`\`\`Exception : ${exception}\`\`\``)
-    }
     msg = ''
     ErrorCode = 0
 });
