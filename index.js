@@ -139,7 +139,7 @@ client.on("message", (message) => {
             return message.channel.send(`${message.author} 출석 체크 되었습니다!`);
         } else if (add == "서버") {
 
-            return message.channel.send(`${message.author} 이 서버는 ${message.guild.name} 이며, 현재 총 인원수는(봇 포함) ${message.guild.memberCount}명 입니다.`);
+            return message.channel.send(`${message.author} 이 서버는 ${message.guild.name} 이며, 현재 총 인원수는(봇 포함) ${message.guild.memberCount}명 입니다. 봇을 제외한 인원수는 ${guild.members.filter(member => !member.user.bot).size}명 입니다.`);
         } else {
 
             return message.channel.send(`${message.author} 알수 없는 인수입니다. "^도움말 체크" 를 사용해 주세요.`);
