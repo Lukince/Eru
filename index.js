@@ -64,7 +64,7 @@ client.on("ready", () => {
 });
 
 client.on("message", (message) => {
-    if (message.channel == 'dm') return;
+    if (message.channel.type == 'dm') return;
     if (message.author.bot) return;
 
     //const member = message.mentions.users.first();
@@ -228,7 +228,7 @@ client.on("message", (message) => {
                 .addField('선택', '주제에 대한 선택지를 선택합니다. 자세한건 "^도움말 선택" 을 참고해 주세요')
                 .addField('가위바위보', '"^가위바위보 [가위 또는 바위 또는 보]"로 봇과 가위바위보를 할 수 있습니다!')
                 .addField('잡기능', '"^토마스", "^샌즈" "^Embed"')
-                .addField('코드 관련', '"^js" discord.js 문서 Url "^소스" Eru봇 소스입니다.')
+                .addField('코드 관련', '"^js" discord.js 문서 Url ~~"^소스" Eru봇 소스입니다. (현재 수리중...)~~')
 
             message.author.send(helpEmbed)
 
