@@ -4,7 +4,7 @@
   "description": "En:\r This is Erubot source code. You can use commands, but don't copy all code.",
   "main": "index.js",
   "dependencies": {
-    "discord.js": "^11.5.1",
+    "discord.js": "^12.5.3",
     "edit-json-file": "^1.4.0",
     "ffmpeg": "0.0.4",
     "mathjs": ">=7.5.1",
